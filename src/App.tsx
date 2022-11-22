@@ -65,8 +65,22 @@ function App() {
   };
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
-    <View>
-      <Text>{item.label}</Text>
+    <View style={{
+      paddingTop: 15,
+      paddingBottom: 15,
+      paddingLeft: 10,
+      paddingRight: 10,
+      flexDirection: 'row',
+    }}
+    >
+      <View style={{ flex: 1, backgroundColor: 'salmon' }} />
+      <View style={{ flex: 4, backgroundColor: 'lightblue' }}>
+        <Text>{item.label}</Text>
+        <Text>{item.description}</Text>
+        <Text>{item.status}</Text>
+        <Text>{item.assignee.name}</Text>
+        <Text>{item.assignee.firstname}</Text>
+      </View>
     </View>
   );
 
