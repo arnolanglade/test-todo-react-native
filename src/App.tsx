@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -41,12 +41,24 @@ type TodoItem = {
 
 type TodoList = TodoItem[];
 
-const todoLists: TodoList = [];
+const todoLists: TodoList = [
+  {
+    id: 1,
+    label: 'label',
+    description: 'description',
+    status: TodoStatus.TODO,
+    assignee: { name: 'Birba', firstname: 'Alexandre' },
+  },
+];
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const [todoList, setTodoList] = useState<TodoList>(todoLists);
+  const [todoList, setTodoList] = useState<TodoList>([]);
+
+  useEffect(() => {
+    setTodoList(todoLists);
+  }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
