@@ -19,6 +19,29 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+enum TodoStatus {
+  TODO,
+  PENDING,
+  DONE,
+}
+
+type Assignee = {
+  name: string,
+  firstname: string
+};
+
+type TodoItem = {
+  id : number,
+  label: string,
+  description: string,
+  status: TodoStatus,
+  assignee: Assignee
+};
+
+type TodoList = TodoItem[];
+
+const todoList: TodoList = [];
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
