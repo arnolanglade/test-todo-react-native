@@ -8,11 +8,12 @@
  * @format
  */
 
-import React from 'react';
+import React, { ReactElement, useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
-  useColorScheme,
+  FlatList,
+  useColorScheme, View, Text,
 } from 'react-native';
 
 import {
@@ -40,14 +41,22 @@ type TodoItem = {
 
 type TodoList = TodoItem[];
 
-const todoList: TodoList = [];
+const todoLists: TodoList = [];
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const [todoList, setTodoList] = useState<TodoList>(todoLists);
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
+    <View>
+      <Text>{item.label}</Text>
+    </View>
+  );
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -55,6 +64,7 @@ function App() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      <FlatList data={todoList} renderItem={renderTodoItem} />
     </SafeAreaView>
   );
 }
