@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Section = function ({ children, title }: { children: ReactNode, title: string }) {
+function Section({ children, title }: { children: ReactNode, title: string }) {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -72,7 +72,7 @@ const Section = function ({ children, title }: { children: ReactNode, title: str
       </Text>
     </View>
   );
-};
+}
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
