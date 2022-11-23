@@ -53,6 +53,7 @@ const todoLists: TodoList = [
     assignee: {
       name: 'Dupond',
       firstname: 'Léo',
+      // eslint-disable-next-line global-require
       image: require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
     },
   },
