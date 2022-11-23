@@ -73,6 +73,15 @@ const messagesInFrench = {
   myMessage: "Aujourd'hui, c'est le {ts, date, ::yyyyMMdd}",
 };
 
+function TodoListView({
+  data,
+  renderItem,
+}: {
+  data: TodoItem[],
+  renderItem: ({ item }: { item: TodoItem }) => ReactElement }) {
+  return <FlatList data={data} renderItem={renderItem} />;
+}
+
 function App() {
   const { todoList } = useTodoList(queryTodoList);
 
@@ -105,7 +114,7 @@ function App() {
   return (
     <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
       <SafeAreaView>
-        <FlatList data={todoList} renderItem={renderTodoItem} />
+        <TodoListView data={todoList} renderItem={renderTodoItem} />
       </SafeAreaView>
     </IntlProvider>
   );
