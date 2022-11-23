@@ -24,19 +24,19 @@ import FastImage, { Source } from 'react-native-fast-image';
 
 import { IntlProvider, FormattedMessage, FormattedNumber } from 'react-intl';
 
-enum TodoStatus {
+export enum TodoStatus {
   TODO,
   PENDING,
   DONE,
 }
 
-type Assignee = {
+export type Assignee = {
   name: string,
   firstname: string,
   image: number | Source
 };
 
-type TodoItem = {
+export type TodoItem = {
   id : number,
   label: string,
   description: string,
@@ -44,7 +44,7 @@ type TodoItem = {
   assignee: Assignee
 };
 
-type TodoList = TodoItem[];
+export type TodoList = TodoItem[];
 
 const todoLists: TodoList = [
   {
@@ -60,6 +60,10 @@ const todoLists: TodoList = [
     },
   },
 ];
+
+export const useTodoList = () => ({
+  todolist: {},
+});
 
 // Translated messages in French with matching IDs to what you declared
 const messagesInFrench = {
