@@ -8,11 +8,11 @@ import renderer from 'react-test-renderer';
 import {
   act, render, renderHook, screen, waitFor,
 } from '@testing-library/react-native';
-import App, { TodoStatus, useTodoList } from './App';
+import App, { TodoList, TodoStatus, useTodoList } from './App';
 
 // Note: test renderer must be required after react-native.
 
-const aTodoList = () => [{
+const aTodoList = () : TodoList => [{
   id: 1,
   label: 'label',
   description: 'description',
@@ -25,8 +25,16 @@ const aTodoList = () => [{
   },
 }];
 
-it('renders correctly', () => {
-  const todolist = renderHook(() => useTodoList());
+const emptyList = () : TodoList => [];
+
+it('should return empty list', () => {
+  const todolist = renderHook(() => useTodoList(emptyList));
+
+  expect(todolist.result.current.todoList).toEqual(emptyList());
+});
+
+it('should return todo items', () => {
+  const todolist = renderHook(() => useTodoList(aTodoList));
 
   expect(todolist.result.current.todoList).toEqual(aTodoList());
 });

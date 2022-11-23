@@ -46,7 +46,22 @@ export type TodoItem = {
 
 export type TodoList = TodoItem[];
 
-const example: TodoList = [
+// const example: TodoList = [
+//  {
+//    id: 1,
+//    label: 'label',
+//    description: 'description',
+//    status: TodoStatus.TODO,
+//    assignee: {
+//      name: 'Dupond',
+//      firstname: 'Henri',
+//      // eslint-disable-next-line global-require
+//      image: require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
+//    },
+//  },
+// ];
+
+const queryTodoList = () : TodoList => [
   {
     id: 1,
     label: 'label',
@@ -61,11 +76,11 @@ const example: TodoList = [
   },
 ];
 
-export const useTodoList = () => {
+export const useTodoList = (repo : () => TodoList) => {
   const [todoList, setTodoList] = useState<TodoList>([]);
 
   useEffect(() => {
-    setTodoList(example);
+    setTodoList(repo());
   }, []);
 
   return {
@@ -81,7 +96,7 @@ const messagesInFrench = {
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const { todoList } = useTodoList();
+  const { todoList } = useTodoList(queryTodoList);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
