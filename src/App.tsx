@@ -74,13 +74,7 @@ const messagesInFrench = {
 };
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   const { todoList } = useTodoList(queryTodoList);
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
     <View style={{
@@ -110,11 +104,7 @@ function App() {
 
   return (
     <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
+      <SafeAreaView>
         <FlatList data={todoList} renderItem={renderTodoItem} />
       </SafeAreaView>
     </IntlProvider>
