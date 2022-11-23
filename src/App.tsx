@@ -8,7 +8,9 @@
  * @format
  */
 
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, {
+  createContext, ReactElement, useEffect, useState,
+} from 'react';
 import {
   SafeAreaView,
   FlatList,
@@ -55,6 +57,9 @@ const queryTodoList = () : TodoList => [
     },
   },
 ];
+
+const container = { queryTodoList };
+const ContainerContext = createContext({});
 
 export const useTodoList = (repo : () => TodoList) => {
   const [todoList, setTodoList] = useState<TodoList>([]);
@@ -112,11 +117,13 @@ function App() {
   );
 
   return (
-    <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
-      <SafeAreaView>
-        <TodoListView data={todoList} renderItem={renderTodoItem} />
-      </SafeAreaView>
-    </IntlProvider>
+    <ContainerContext.Provider value={container}>
+      <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
+        <SafeAreaView>
+          <TodoListView data={todoList} renderItem={renderTodoItem} />
+        </SafeAreaView>
+      </IntlProvider>
+    </ContainerContext.Provider>
   );
 }
 
