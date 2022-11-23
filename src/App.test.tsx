@@ -3,7 +3,7 @@
  */
 
 import 'react-native';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import renderer from 'react-test-renderer';
 import {
   act, render, renderHook, screen, waitFor,
@@ -30,7 +30,7 @@ const aTodoList = () : TodoList => [{
 const emptyList = () : TodoList => [];
 
 it('should return empty list', () => {
-  function Wrapper({ children }: { children }) {
+  function Wrapper({ children }: { children: ReactNode }) {
     return <ContainerContext.Provider value={{ queryTodoList: emptyList }}>{children}</ContainerContext.Provider>;
   }
   const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
@@ -39,7 +39,7 @@ it('should return empty list', () => {
 });
 
 it('should return todo items', () => {
-  function Wrapper({ children }: { children }) {
+  function Wrapper({ children }: { children: ReactNode }) {
     return <ContainerContext.Provider value={{ queryTodoList: aTodoList }}>{children}</ContainerContext.Provider>;
   }
   const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });

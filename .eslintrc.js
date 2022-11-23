@@ -5,5 +5,12 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   parserOptions: {
      project: './tsconfig.json'
-  }
+  },
+  "overrides": [
+    {
+      "rules": {
+        "max-len": 120,
+      }
+    }
+  ]
 };

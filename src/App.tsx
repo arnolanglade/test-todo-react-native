@@ -59,7 +59,7 @@ const queryTodoList = () : TodoList => [
 ];
 
 export const container = { queryTodoList };
-export const ContainerContext = createContext({});
+export const ContainerContext = createContext<{queryTodoList:() => TodoList}>({queryTodoList: () => [],});
 
 export const useTodoList = () => {
   const { queryTodoList } = useContext(ContainerContext);
