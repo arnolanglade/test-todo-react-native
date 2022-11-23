@@ -11,18 +11,13 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import {
   SafeAreaView,
-  StatusBar,
   FlatList,
-  useColorScheme, View, Text,
+  View, Text,
 } from 'react-native';
-
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 
 import FastImage, { Source } from 'react-native-fast-image';
 
-import { IntlProvider, FormattedMessage, FormattedNumber } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 
 export enum TodoStatus {
   TODO,
@@ -45,21 +40,6 @@ export type TodoItem = {
 };
 
 export type TodoList = TodoItem[];
-
-// const example: TodoList = [
-//  {
-//    id: 1,
-//    label: 'label',
-//    description: 'description',
-//    status: TodoStatus.TODO,
-//    assignee: {
-//      name: 'Dupond',
-//      firstname: 'Henri',
-//      // eslint-disable-next-line global-require
-//      image: require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
-//    },
-//  },
-// ];
 
 const queryTodoList = () : TodoList => [
   {
@@ -136,18 +116,6 @@ function App() {
           backgroundColor={backgroundStyle.backgroundColor}
         />
         <FlatList data={todoList} renderItem={renderTodoItem} />
-
-        <Text>
-          <FormattedMessage
-            id="myMessage"
-            defaultMessage="Today is {ts, date, ::yyyyMMdd}"
-            values={{ ts: Date.now() }}
-          />
-          {' '}
-          {/* eslint-disable-next-line react/style-prop-object */}
-          <FormattedNumber value={19} currency="EUR" style="currency" />
-        </Text>
-
       </SafeAreaView>
     </IntlProvider>
   );
