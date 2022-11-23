@@ -46,7 +46,7 @@ export type TodoItem = {
 
 export type TodoList = TodoItem[];
 
-const todoLists: TodoList = [
+const example: TodoList = [
   {
     id: 1,
     label: 'label',
@@ -61,9 +61,17 @@ const todoLists: TodoList = [
   },
 ];
 
-export const useTodoList = () => ({
-  todolist: {},
-});
+export const useTodoList = () => {
+  const [todoList, setTodoList] = useState<TodoList>([]);
+
+  useEffect(() => {
+    setTodoList(example);
+  }, []);
+
+  return {
+    todoList,
+  };
+};
 
 // Translated messages in French with matching IDs to what you declared
 const messagesInFrench = {
@@ -72,12 +80,6 @@ const messagesInFrench = {
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
-
-  const [todoList, setTodoList] = useState<TodoList>([]);
-
-  useEffect(() => {
-    setTodoList(todoLists);
-  }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -116,7 +118,7 @@ function App() {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
-        <FlatList data={todoList} renderItem={renderTodoItem} />
+        <FlatList data={example} renderItem={renderTodoItem} />
 
         <Text>
           <FormattedMessage
