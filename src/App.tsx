@@ -22,6 +22,8 @@ import {
 
 import FastImage, { Source } from 'react-native-fast-image';
 
+import { IntlProvider, FormattedMessage, FormattedNumber } from 'react-intl';
+
 enum TodoStatus {
   TODO,
   PENDING,
@@ -52,12 +54,17 @@ const todoLists: TodoList = [
     status: TodoStatus.TODO,
     assignee: {
       name: 'Dupond',
-      firstname: 'Léo',
+      firstname: 'Henri',
       // eslint-disable-next-line global-require
       image: require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
     },
   },
 ];
+
+// Translated messages in French with matching IDs to what you declared
+const messagesInFrench = {
+  myMessage: "Aujourd'hui, c'est le {ts, date, ::yyyyMMdd}",
+};
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -99,14 +106,27 @@ function App() {
   );
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <FlatList data={todoList} renderItem={renderTodoItem} />
+    <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
+      <SafeAreaView style={backgroundStyle}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        <FlatList data={todoList} renderItem={renderTodoItem} />
 
-    </SafeAreaView>
+        <Text>
+          <FormattedMessage
+            id="myMessage"
+            defaultMessage="Today is {ts, date, ::yyyyMMdd}"
+            values={{ ts: Date.now() }}
+          />
+          {' '}
+          {/* eslint-disable-next-line react/style-prop-object */}
+          <FormattedNumber value={19} currency="EUR" style="currency" />
+        </Text>
+
+      </SafeAreaView>
+    </IntlProvider>
   );
 }
 
