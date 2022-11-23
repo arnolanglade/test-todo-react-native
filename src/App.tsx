@@ -20,7 +20,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import FastImage from 'react-native-fast-image';
+import FastImage, { Source } from 'react-native-fast-image';
 
 enum TodoStatus {
   TODO,
@@ -30,7 +30,8 @@ enum TodoStatus {
 
 type Assignee = {
   name: string,
-  firstname: string
+  firstname: string,
+  image: number | Source
 };
 
 type TodoItem = {
@@ -49,7 +50,11 @@ const todoLists: TodoList = [
     label: 'label',
     description: 'description',
     status: TodoStatus.TODO,
-    assignee: { name: 'Birba', firstname: 'Alexandre' },
+    assignee: {
+      name: 'Dupond',
+      firstname: 'Léo',
+      image: require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
+    },
   },
 ];
 
@@ -78,7 +83,7 @@ function App() {
       <View style={{ flex: 1, backgroundColor: 'salmon' }}>
         <FastImage
           style={{ width: '100%', height: '100%' }}
-          source={require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp')}
+          source={item.assignee.image}
           resizeMode={FastImage.resizeMode.center}
         />
       </View>
