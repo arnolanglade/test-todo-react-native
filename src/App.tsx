@@ -81,6 +81,8 @@ const messagesInFrench = {
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const { todoList } = useTodoList();
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -118,7 +120,7 @@ function App() {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
-        <FlatList data={example} renderItem={renderTodoItem} />
+        <FlatList data={todoList} renderItem={renderTodoItem} />
 
         <Text>
           <FormattedMessage

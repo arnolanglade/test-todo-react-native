@@ -5,7 +5,9 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { act, renderHook, waitFor } from '@testing-library/react-native';
+import {
+  act, render, renderHook, screen, waitFor,
+} from '@testing-library/react-native';
 import App, { TodoStatus, useTodoList } from './App';
 
 // Note: test renderer must be required after react-native.
@@ -27,4 +29,10 @@ it('renders correctly', () => {
   const todolist = renderHook(() => useTodoList());
 
   expect(todolist.result.current.todoList).toEqual(aTodoList());
+});
+
+it('return correct label', () => {
+  render(<App />);
+
+  expect(screen.getByText('label')).toBeTruthy();
 });
