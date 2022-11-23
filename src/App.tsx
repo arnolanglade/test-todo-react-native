@@ -9,7 +9,7 @@
  */
 
 import React, {
-  createContext, ReactElement, useEffect, useState,
+  createContext, ReactElement, useContext, useEffect, useState,
 } from 'react';
 import {
   SafeAreaView,
@@ -58,14 +58,15 @@ const queryTodoList = () : TodoList => [
   },
 ];
 
-const container = { queryTodoList };
-const ContainerContext = createContext({});
+export const container = { queryTodoList };
+export const ContainerContext = createContext({});
 
-export const useTodoList = (repo : () => TodoList) => {
+export const useTodoList = () => {
+  const { queryTodoList } = useContext(ContainerContext);
   const [todoList, setTodoList] = useState<TodoList>([]);
 
   useEffect(() => {
-    setTodoList(repo());
+    setTodoList(queryTodoList());
   }, []);
 
   return {
@@ -79,17 +80,14 @@ const messagesInFrench = {
 };
 
 function TodoListView({
-  data,
   renderItem,
 }: {
-  data: TodoItem[],
   renderItem: ({ item }: { item: TodoItem }) => ReactElement }) {
-  return <FlatList data={data} renderItem={renderItem} />;
+  const { todoList } = useTodoList();
+  return <FlatList data={todoList} renderItem={renderItem} />;
 }
 
 function App() {
-  const { todoList } = useTodoList(queryTodoList);
-
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
     <View style={{
       paddingTop: 15,
@@ -120,7 +118,7 @@ function App() {
     <ContainerContext.Provider value={container}>
       <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
         <SafeAreaView>
-          <TodoListView data={todoList} renderItem={renderTodoItem} />
+          <TodoListView renderItem={renderTodoItem} />
         </SafeAreaView>
       </IntlProvider>
     </ContainerContext.Provider>
