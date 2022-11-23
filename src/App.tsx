@@ -20,6 +20,8 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+import FastImage from 'react-native-fast-image';
+
 enum TodoStatus {
   TODO,
   PENDING,
@@ -73,7 +75,13 @@ function App() {
       flexDirection: 'row',
     }}
     >
-      <View style={{ flex: 1, backgroundColor: 'salmon' }} />
+      <View style={{ flex: 1, backgroundColor: 'salmon' }}>
+        <FastImage
+          style={{ width: '100%', height: '100%' }}
+          source={require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp')}
+          resizeMode={FastImage.resizeMode.center}
+        />
+      </View>
       <View style={{ flex: 4, backgroundColor: 'lightblue' }}>
         <Text>{item.label}</Text>
         <Text>{item.description}</Text>
@@ -91,6 +99,7 @@ function App() {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <FlatList data={todoList} renderItem={renderTodoItem} />
+
     </SafeAreaView>
   );
 }
