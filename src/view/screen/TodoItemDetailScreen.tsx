@@ -7,7 +7,7 @@ export default function TodoItemDetailScreen() {
 
   return (
     <View>
-      <Text>{todoItem?.label}</Text>
+      <Text testID="label">{todoItem?.label}</Text>
     </View>
   );
 }
