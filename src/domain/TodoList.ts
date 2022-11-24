@@ -18,4 +18,4 @@ export type TodoItem = {
   status: TodoStatus,
   assignee: Assignee
 };
-export type TodoList = TodoItem[];
+export type TodoList = Array<TodoItem>;
