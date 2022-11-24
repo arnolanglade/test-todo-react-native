@@ -9,7 +9,7 @@ import {
 } from '@testing-library/react-native';
 import { TodoList, TodoStatus } from '../domain/TodoList';
 import { useTodoList } from './UseTodoList';
-import { ContainerContext } from '../app/ContainerContext';
+import { ContainerContext, ContainerType } from '../app/ContainerContext';
 
 const aTodoList = () : TodoList => [{
   id: 1,
@@ -26,9 +26,11 @@ const aTodoList = () : TodoList => [{
 
 const emptyList = () : TodoList => [];
 
+const container = (services:Partial<ContainerType>) : ContainerType => ({ queryTodoList: jest.fn(), queryTodoItem: jest.fn(), ...services });
+
 it('should return empty list', () => {
   function Wrapper({ children }: { children: ReactNode }) {
-    return <ContainerContext.Provider value={{ queryTodoList: emptyList }}>{children}</ContainerContext.Provider>;
+    return <ContainerContext.Provider value={container({ queryTodoList: emptyList })}>{children}</ContainerContext.Provider>;
   }
   const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
 
@@ -37,7 +39,7 @@ it('should return empty list', () => {
 
 it('should return todo items', () => {
   function Wrapper({ children }: { children: ReactNode }) {
-    return <ContainerContext.Provider value={{ queryTodoList: aTodoList }}>{children}</ContainerContext.Provider>;
+    return <ContainerContext.Provider value={container({ queryTodoList: aTodoList })}>{children}</ContainerContext.Provider>;
   }
   const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
 
