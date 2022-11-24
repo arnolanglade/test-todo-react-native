@@ -12,36 +12,13 @@ import React, {
   createContext, ReactElement, useContext, useEffect, useState,
 } from 'react';
 import {
-  SafeAreaView,
-  FlatList,
-  View, Text,
+  FlatList, SafeAreaView, Text, View,
 } from 'react-native';
 
-import FastImage, { Source } from 'react-native-fast-image';
+import FastImage from 'react-native-fast-image';
 
 import { IntlProvider } from 'react-intl';
-
-export enum TodoStatus {
-  TODO,
-  PENDING,
-  DONE,
-}
-
-export type Assignee = {
-  name: string,
-  firstname: string,
-  image: number | Source
-};
-
-export type TodoItem = {
-  id : number,
-  label: string,
-  description: string,
-  status: TodoStatus,
-  assignee: Assignee
-};
-
-export type TodoList = TodoItem[];
+import { TodoItem, TodoList, TodoStatus } from './domain/TodoList';
 
 const queryTodoList = () : TodoList => [
   {
