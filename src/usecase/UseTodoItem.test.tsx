@@ -3,12 +3,10 @@
  */
 
 import 'react-native';
-import React, { ReactNode } from 'react';
 import { renderHook } from '@testing-library/react-native';
 import { TodoItem, TodoStatus } from '../domain/TodoList';
-import { ContainerContext } from '../app/ContainerContext';
 import { useTodoItem } from './UseTodoItem';
-import { container } from '../app/TestUtils';
+import { createWrapper } from '../app/TestUtils';
 
 const aTodoItem = () : TodoItem => ({
   id: 1,
@@ -24,10 +22,10 @@ const aTodoItem = () : TodoItem => ({
 });
 
 it('should return todo item details', () => {
-  function Wrapper({ children }: { children: ReactNode }) {
-    return <ContainerContext.Provider value={container({ queryTodoItem: aTodoItem })}>{children}</ContainerContext.Provider>;
-  }
-  const todolist = renderHook(() => useTodoItem(), { wrapper: Wrapper });
+  const todolist = renderHook(
+    () => useTodoItem(),
+    { wrapper: createWrapper({ queryTodoItem: aTodoItem }) },
+  );
 
   expect(todolist.result.current.todoItem).toEqual(aTodoItem());
 });
