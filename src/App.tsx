@@ -9,7 +9,7 @@
  */
 
 import React, {
-  createContext, ReactElement, useContext, useEffect, useState,
+  ReactElement, useContext, useEffect, useState,
 } from 'react';
 import {
   FlatList, SafeAreaView, Text, View,
@@ -19,6 +19,7 @@ import FastImage from 'react-native-fast-image';
 
 import { IntlProvider } from 'react-intl';
 import { TodoItem, TodoList, TodoStatus } from './domain/TodoList';
+import { ContainerContext } from './app/ContainerContext';
 
 const queryTodoList = () : TodoList => [
   {
@@ -36,7 +37,6 @@ const queryTodoList = () : TodoList => [
 ];
 
 export const container = { queryTodoList };
-export const ContainerContext = createContext<{ queryTodoList:() => TodoList }>({ queryTodoList: () => [] });
 
 export const useTodoList = () => {
   const { queryTodoList } = useContext(ContainerContext);

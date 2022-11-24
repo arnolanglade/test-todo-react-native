@@ -7,10 +7,9 @@ import React, { ReactNode } from 'react';
 import {
   render, renderHook, screen,
 } from '@testing-library/react-native';
-import App, {
-  ContainerContext, useTodoList,
-} from './App';
+import App, { useTodoList } from './App';
 import { TodoList, TodoStatus } from './domain/TodoList';
+import { ContainerContext } from './app/ContainerContext';
 
 // Note: test renderer must be required after react-native.
 
