@@ -4,7 +4,7 @@ import FastImage from 'react-native-fast-image';
 import { TodoItem } from '../../domain/TodoList';
 import { useTodoList } from '../../usecase/UseTodoList';
 
-export default function TodoListView() {
+export default function TodoListScreen() {
   const { todoList } = useTodoList();
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (

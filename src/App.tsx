@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-native';
 
 import { IntlProvider } from 'react-intl';
 import { container, ContainerContext } from './app/ContainerContext';
-import TodoListView from './view/screen/TodoListView';
+import TodoListScreen from './view/screen/TodoListScreen';
 
 // Translated messages in French with matching IDs to what you declared
 const messagesInFrench = {
@@ -25,7 +25,7 @@ function App() {
     <ContainerContext.Provider value={container}>
       <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
         <SafeAreaView>
-          <TodoListView />
+          <TodoListScreen />
         </SafeAreaView>
       </IntlProvider>
     </ContainerContext.Provider>
