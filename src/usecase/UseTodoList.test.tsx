@@ -7,7 +7,7 @@ import React, { ReactNode } from 'react';
 import {
   renderHook,
 } from '@testing-library/react-native';
-import { TodoList, TodoStatus } from '../domain/TodoList';
+import { TodoItem, TodoList, TodoStatus } from '../domain/TodoList';
 import { useTodoList } from './UseTodoList';
 import { ContainerContext, ServiceContainer } from '../app/ContainerContext';
 
@@ -23,6 +23,19 @@ const aTodoList = () : TodoList => [{
     image: require('../../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
   },
 }];
+
+const aTodoItem = () : TodoItem => ({
+  id: 1,
+  label: 'label',
+  description: 'description',
+  status: TodoStatus.TODO,
+  assignee: {
+    name: 'Dupond',
+    firstname: 'Henri',
+    // eslint-disable-next-line global-require
+    image: require('../../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
+  },
+});
 
 const emptyList = () : TodoList => [];
 
@@ -44,4 +57,13 @@ it('should return todo items', () => {
   const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
 
   expect(todolist.result.current.todoList).toEqual(aTodoList());
+});
+
+it('should return todo item details', () => {
+  function Wrapper({ children }: { children: ReactNode }) {
+    return <ContainerContext.Provider value={container({ queryTodoItem: aTodoItem })}>{children}</ContainerContext.Provider>;
+  }
+  const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
+
+  expect(todolist.result.current.getTodoItem(1)).toEqual(aTodoItem());
 });
