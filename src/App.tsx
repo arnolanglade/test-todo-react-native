@@ -8,21 +8,14 @@
  * @format
  */
 
-import React, {
-  ReactElement, useContext, useEffect, useState,
-} from 'react';
-import {
-  FlatList, SafeAreaView, Text, View,
-} from 'react-native';
+import React, {ReactElement, useContext, useEffect, useState,} from 'react';
+import {FlatList, SafeAreaView, Text, View,} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
 
-import { IntlProvider } from 'react-intl';
-import { TodoItem, TodoList } from './domain/TodoList';
-import { ContainerContext } from './app/ContainerContext';
-import { queryTodoList } from './service/QueryTodoList';
-
-export const container = { queryTodoList };
+import {IntlProvider} from 'react-intl';
+import {TodoItem, TodoList} from './domain/TodoList';
+import {container, ContainerContext} from './app/ContainerContext';
 
 export const useTodoList = () => {
   const { queryTodoList } = useContext(ContainerContext);
