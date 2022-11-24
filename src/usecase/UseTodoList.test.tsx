@@ -7,9 +7,10 @@ import React, { ReactNode } from 'react';
 import {
   renderHook,
 } from '@testing-library/react-native';
+import { container } from '../app/TestUtils';
 import { TodoList, TodoStatus } from '../domain/TodoList';
 import { useTodoList } from './UseTodoList';
-import { ContainerContext, ServiceContainer } from '../app/ContainerContext';
+import { ContainerContext } from '../app/ContainerContext';
 
 const aTodoList = () : TodoList => [{
   id: 1,
@@ -25,8 +26,6 @@ const aTodoList = () : TodoList => [{
 }];
 
 const emptyList = () : TodoList => [];
-
-const container = (services:Partial<ServiceContainer>) : ServiceContainer => ({ queryTodoList: jest.fn(), queryTodoItem: jest.fn(), ...services });
 
 it('should return empty list', () => {
   function Wrapper({ children }: { children: ReactNode }) {

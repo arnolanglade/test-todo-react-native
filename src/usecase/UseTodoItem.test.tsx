@@ -4,12 +4,11 @@
 
 import 'react-native';
 import React, { ReactNode } from 'react';
-import {
-  renderHook,
-} from '@testing-library/react-native';
+import { renderHook } from '@testing-library/react-native';
 import { TodoItem, TodoStatus } from '../domain/TodoList';
-import { ContainerContext, ServiceContainer } from '../app/ContainerContext';
+import { ContainerContext } from '../app/ContainerContext';
 import { useTodoItem } from './UseTodoItem';
+import { container } from '../app/TestUtils';
 
 const aTodoItem = () : TodoItem => ({
   id: 1,
@@ -23,8 +22,6 @@ const aTodoItem = () : TodoItem => ({
     image: require('../../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
   },
 });
-
-const container = (services:Partial<ServiceContainer>) : ServiceContainer => ({ queryTodoList: jest.fn(), queryTodoItem: jest.fn(), ...services });
 
 it('should return todo item details', () => {
   function Wrapper({ children }: { children: ReactNode }) {
