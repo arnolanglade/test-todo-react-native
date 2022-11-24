@@ -3,51 +3,13 @@
  */
 
 import 'react-native';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import {
-  render, renderHook, screen,
+  render, screen,
 } from '@testing-library/react-native';
 import App from './App';
-import { TodoList, TodoStatus } from './domain/TodoList';
-import { ContainerContext } from './app/ContainerContext';
-import { useTodoList } from './usecase/UseTodoList';
 
-// Note: test renderer must be required after react-native.
-
-const aTodoList = () : TodoList => [{
-  id: 1,
-  label: 'label',
-  description: 'description',
-  status: TodoStatus.TODO,
-  assignee: {
-    name: 'Dupond',
-    firstname: 'Henri',
-    // eslint-disable-next-line global-require
-    image: require('../asset/images/portrait-homme-blanc-isole_53876-40306.webp'),
-  },
-}];
-
-const emptyList = () : TodoList => [];
-
-it('should return empty list', () => {
-  function Wrapper({ children }: { children: ReactNode }) {
-    return <ContainerContext.Provider value={{ queryTodoList: emptyList }}>{children}</ContainerContext.Provider>;
-  }
-  const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
-
-  expect(todolist.result.current.todoList).toEqual(emptyList());
-});
-
-it('should return todo items', () => {
-  function Wrapper({ children }: { children: ReactNode }) {
-    return <ContainerContext.Provider value={{ queryTodoList: aTodoList }}>{children}</ContainerContext.Provider>;
-  }
-  const todolist = renderHook(() => useTodoList(), { wrapper: Wrapper });
-
-  expect(todolist.result.current.todoList).toEqual(aTodoList());
-});
-
-it('return correct label', () => {
+it('renders the todo list with a item', () => {
   render(<App />);
 
   expect(screen.getByText('label')).toBeTruthy();
