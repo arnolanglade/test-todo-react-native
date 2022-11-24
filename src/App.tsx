@@ -8,54 +8,17 @@
  * @format
  */
 
-import React, { ReactElement } from 'react';
-import {
-  FlatList, SafeAreaView, Text, View,
-} from 'react-native';
-
-import FastImage from 'react-native-fast-image';
+import React from 'react';
+import { SafeAreaView } from 'react-native';
 
 import { IntlProvider } from 'react-intl';
-import { TodoItem } from './domain/TodoList';
 import { container, ContainerContext } from './app/ContainerContext';
-import { useTodoList } from './usecase/UseTodoList';
+import TodoListView from './view/screen/TodoListView';
 
 // Translated messages in French with matching IDs to what you declared
 const messagesInFrench = {
   myMessage: "Aujourd'hui, c'est le {ts, date, ::yyyyMMdd}",
 };
-
-function TodoListView() {
-  const { todoList } = useTodoList();
-
-  const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
-    <View style={{
-      paddingTop: 15,
-      paddingBottom: 15,
-      paddingLeft: 10,
-      paddingRight: 10,
-      flexDirection: 'row',
-    }}
-    >
-      <View style={{ flex: 1, backgroundColor: 'salmon' }}>
-        <FastImage
-          style={{ width: '100%', height: '100%' }}
-          source={item.assignee.image}
-          resizeMode={FastImage.resizeMode.center}
-        />
-      </View>
-      <View style={{ flex: 4, backgroundColor: 'lightblue' }}>
-        <Text>{item.label}</Text>
-        <Text>{item.description}</Text>
-        <Text>{item.status}</Text>
-        <Text>{item.assignee.name}</Text>
-        <Text>{item.assignee.firstname}</Text>
-      </View>
-    </View>
-  );
-
-  return <FlatList data={todoList} renderItem={renderTodoItem} />;
-}
 
 function App() {
   return (
