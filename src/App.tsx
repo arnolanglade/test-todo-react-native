@@ -8,27 +8,17 @@
  * @format
  */
 
-import React, {ReactElement, useContext, useEffect, useState,} from 'react';
-import {FlatList, SafeAreaView, Text, View,} from 'react-native';
+import React, { ReactElement } from 'react';
+import {
+  FlatList, SafeAreaView, Text, View,
+} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
 
-import {IntlProvider} from 'react-intl';
-import {TodoItem, TodoList} from './domain/TodoList';
-import {container, ContainerContext} from './app/ContainerContext';
-
-export const useTodoList = () => {
-  const { queryTodoList } = useContext(ContainerContext);
-  const [todoList, setTodoList] = useState<TodoList>([]);
-
-  useEffect(() => {
-    setTodoList(queryTodoList());
-  }, []);
-
-  return {
-    todoList,
-  };
-};
+import { IntlProvider } from 'react-intl';
+import { TodoItem } from './domain/TodoList';
+import { container, ContainerContext } from './app/ContainerContext';
+import { useTodoList } from './usecase/UseTodoList';
 
 // Translated messages in French with matching IDs to what you declared
 const messagesInFrench = {
