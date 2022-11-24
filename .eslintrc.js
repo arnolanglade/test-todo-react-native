@@ -6,11 +6,7 @@ module.exports = {
   parserOptions: {
      project: './tsconfig.json'
   },
-  "overrides": [
-    {
-      "rules": {
-        "max-len": 120,
-      }
-    }
-  ]
+  rules: {
+    'max-len': [1, { code: 120 }],
+  }
 };

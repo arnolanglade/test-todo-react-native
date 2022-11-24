@@ -4,9 +4,8 @@
 
 import 'react-native';
 import React, { ReactNode } from 'react';
-import renderer from 'react-test-renderer';
 import {
-  act, render, renderHook, screen, waitFor,
+  render, renderHook, screen,
 } from '@testing-library/react-native';
 import App, {
   ContainerContext, TodoList, TodoStatus, useTodoList,
