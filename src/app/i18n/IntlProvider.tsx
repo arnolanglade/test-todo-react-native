@@ -3,7 +3,7 @@ import { IntlProvider as BaseIntlProvider, useIntl as useBaseIntl, FormattedMess
 
 export type Translations = Record<string, string>;
 
-const messages: Translations = {
+const translation: Translations = {
   todoListTitle: 'Todo Lists',
   assigneeTitle: 'Assignees',
 };
@@ -20,7 +20,7 @@ export default function IntlProvider(
   { children, overriddenMessages }:{ children: ReactElement, overriddenMessages?: Translations },
 ) {
   return (
-    <BaseIntlProvider messages={{ ...messages, ...overriddenMessages }} locale="en" defaultLocale="en">
+    <BaseIntlProvider messages={{ ...translation, ...overriddenMessages }} locale="en" defaultLocale="en">
       {children}
     </BaseIntlProvider>
   );
