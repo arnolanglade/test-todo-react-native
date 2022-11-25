@@ -9,12 +9,12 @@ export const container = (services: Partial<ServiceContainer>): ServiceContainer
   ...services,
 });
 
-export const createWrapper = (serviceContainer: Partial<ServiceContainer>, messages: Translations = {}) => function Wrapper(
+export const createWrapper = (serviceContainer: Partial<ServiceContainer>, translations: Translations = {}) => function Wrapper(
   { children }: { children: ReactNode },
 ) {
   return (
     <ContainerContext.Provider value={container(serviceContainer)}>
-      <IntlProvider overriddenTranlations={messages}>
+      <IntlProvider overriddenTranlations={translations}>
         <NavigationContainer>
           {children}
         </NavigationContainer>
