@@ -6,7 +6,7 @@ import 'react-native';
 import {
   renderHook,
 } from '@testing-library/react-native';
-import { createWrapper } from '../app/testing/TestUtils';
+import { createWrapper } from '../app/testing/WrapperUtils';
 import { TodoList, TodoStatus } from '../domain/TodoList';
 import { useTodoList } from './UseTodoList';
 

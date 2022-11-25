@@ -6,7 +6,7 @@ import 'react-native';
 import { renderHook } from '@testing-library/react-native';
 import { TodoItem, TodoStatus } from '../domain/TodoList';
 import { useTodoItem } from './UseTodoItem';
-import { createWrapper } from '../app/testing/TestUtils';
+import { createWrapper } from '../app/testing/WrapperUtils';
 
 const aTodoItem = () : TodoItem => ({
   id: 1,

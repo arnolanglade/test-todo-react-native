@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react-native';
 import TodoItemDetailScreen from './TodoItemDetailScreen';
 import { container } from '../../app/ContainerContext';
 import { createNavigationMock, createRouteParams } from '../../app/testing/NavigationUtils';
-import { createWrapper } from '../../app/testing/TestUtils';
+import { createWrapper } from '../../app/testing/WrapperUtils';
 
 it('renders the todo item details', async () => {
   render(

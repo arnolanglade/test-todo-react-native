@@ -9,7 +9,7 @@ import {
 } from '@testing-library/react-native';
 import TodoListScreen from './TodoListScreen';
 import { container } from '../../app/ContainerContext';
-import { createWrapper } from '../../app/testing/TestUtils';
+import { createWrapper } from '../../app/testing/WrapperUtils';
 import { createNavigationMock, createRouteParams } from '../../app/testing/NavigationUtils';
 
 it('renders the todo list with a item', () => {
