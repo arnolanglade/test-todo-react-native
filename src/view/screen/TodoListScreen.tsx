@@ -7,7 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TodoItem } from '../../domain/TodoList';
 import { useTodoList } from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
-import { Message } from '../../app/i18n/IntlProvider';
+import { Translation } from '../../app/i18n/IntlProvider';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TodoList'>;
 
@@ -32,7 +32,7 @@ export default function TodoListScreen({ navigation }: Props) {
       }}
     >
       <Text>
-        <Message id="todoListTitle" />
+        <Translation id="todoListTitle" />
       </Text>
       <View style={{ flex: 1, backgroundColor: 'salmon' }}>
         <FastImage

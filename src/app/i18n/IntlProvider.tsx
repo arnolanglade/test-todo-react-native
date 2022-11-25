@@ -30,10 +30,10 @@ IntlProvider.defaultProps = {
   overriddenTranlations: undefined,
 };
 
-export function Message({ id, values }: { id: string, values?: Record<string, string> }) {
+export function Translation({ id, values }: { id: string, values?: Record<string, string> }) {
   return <FormattedMessage id={id} values={values} />;
 }
 
-Message.defaultProps = {
+Translation.defaultProps = {
   values: {},
 };
