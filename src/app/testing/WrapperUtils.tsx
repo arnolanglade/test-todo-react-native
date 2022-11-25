@@ -14,7 +14,7 @@ export const createWrapper = (serviceContainer: Partial<ServiceContainer>, trans
 ) {
   return (
     <ContainerContext.Provider value={container(serviceContainer)}>
-      <IntlProvider overriddenTranlations={translations}>
+      <IntlProvider overriddenTranslations={translations}>
         <NavigationContainer>
           {children}
         </NavigationContainer>
