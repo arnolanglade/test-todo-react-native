@@ -3,19 +3,25 @@ import {
   FlatList, Text, TouchableOpacity, View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TodoItem } from '../../domain/TodoList';
 import { useTodoList } from '../../usecase/UseTodoList';
+import { RootStackParamList } from '../../app/RootStackListType';
 
-export default function TodoListScreen({ navigation }) {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+export default function TodoListScreen({ navigation }: Props) {
   const { todoList } = useTodoList();
 
-  const navigateToDetails = () => {
-    navigation.navigate('Item');
+  const navigateToDetails = (id:number) => {
+    navigation.navigate('Item', {
+      id,
+    });
   };
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
     <TouchableOpacity
-      onPress={navigateToDetails}
+      onPress={() => navigateToDetails(item.id)}
       style={{
         paddingTop: 15,
         paddingBottom: 15,

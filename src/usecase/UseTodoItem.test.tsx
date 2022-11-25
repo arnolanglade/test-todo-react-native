@@ -23,7 +23,7 @@ const aTodoItem = () : TodoItem => ({
 
 it('should return todo item details', () => {
   const todolist = renderHook(
-    () => useTodoItem(),
+    () => useTodoItem(1),
     { wrapper: createWrapper({ queryTodoItem: aTodoItem }) },
   );
 
