@@ -12,7 +12,7 @@ export const useIntl = () => {
   const intl = useBaseIntl();
 
   return {
-    message: (id: string, values: Record<string, string> = {}): string => intl.formatMessage({ id }, values),
+    translation: (id: string, values: Record<string, string> = {}): string => intl.formatMessage({ id }, values),
   };
 };
 

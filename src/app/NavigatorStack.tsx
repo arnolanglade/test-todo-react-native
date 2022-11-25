@@ -15,11 +15,11 @@ function AssigneeListScreen() {
 }
 
 function TabNavigator() {
-  const { message } = useIntl();
+  const { translation } = useIntl();
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="TodoList" options={{ tabBarLabel: message('todoListTitle') }} component={TodoListScreen} />
-      <Tab.Screen name="Assignee" options={{ tabBarLabel: message('assigneeTitle') }} component={AssigneeListScreen} />
+      <Tab.Screen name="TodoList" options={{ tabBarLabel: translation('todoListTitle') }} component={TodoListScreen} />
+      <Tab.Screen name="Assignee" options={{ tabBarLabel: translation('assigneeTitle') }} component={AssigneeListScreen} />
     </Tab.Navigator>
   );
 }
