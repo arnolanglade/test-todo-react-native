@@ -10,7 +10,7 @@ import {
 import TodoListScreen from './TodoListScreen';
 import { container } from '../../app/ContainerContext';
 import { createWrapper } from '../../app/TestUtils';
-import { createNavigationMock, createRouteParams } from '../../app/NavigationUtils';
+import { createNavigationMock, createRouteParams } from '../../app/testing/NavigationUtils';
 
 it('renders the todo list with a item', () => {
   render(
