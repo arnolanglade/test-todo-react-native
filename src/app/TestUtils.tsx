@@ -9,17 +9,13 @@ export const container = (services: Partial<ServiceContainer>): ServiceContainer
   ...services,
 });
 
-const Stack = createNativeStackNavigator();
-
 export const createWrapper = (serviceContainer: Partial<ServiceContainer>) => function Wrapper(
   { children }: { children: ReactNode },
 ) {
   return (
     <ContainerContext.Provider value={container(serviceContainer)}>
       <NavigationContainer>
-        <Stack.Navigator>
-          {children}
-        </Stack.Navigator>
+        {children}
       </NavigationContainer>
     </ContainerContext.Provider>
   );

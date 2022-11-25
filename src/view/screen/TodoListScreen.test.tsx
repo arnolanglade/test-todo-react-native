@@ -9,13 +9,14 @@ import {
 } from '@testing-library/react-native';
 import TodoListScreen from './TodoListScreen';
 import { container, ContainerContext } from '../../app/ContainerContext';
+import TodoItemDetailScreen from './TodoItemDetailScreen';
+import { createWrapper } from '../../app/TestUtils';
 
 it('renders the todo list with a item', () => {
-  render((
-    <ContainerContext.Provider value={container}>
-      <TodoListScreen />
-    </ContainerContext.Provider>
-  ));
+  render(
+    <TodoListScreen />,
+    { wrapper: createWrapper(container) },
+  );
 
   expect(screen.getByText('label')).toBeTruthy();
 });

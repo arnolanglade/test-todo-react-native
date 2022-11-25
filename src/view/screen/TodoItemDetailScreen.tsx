@@ -7,7 +7,7 @@ import { RootStackParamList } from '../../app/RootStackListType';
 type Props = NativeStackScreenProps<RootStackParamList, 'Item'>;
 
 export default function TodoItemDetailScreen({ route }: Props) {
-  const { todoItem } = useTodoItem(route.params?.id);
+  const { todoItem } = useTodoItem(route?.params?.id);
 
   return (
     <View>
