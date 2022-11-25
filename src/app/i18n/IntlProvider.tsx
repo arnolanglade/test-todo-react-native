@@ -17,17 +17,17 @@ export const useIntl = () => {
 };
 
 export default function IntlProvider(
-  { children, overriddenMessages }:{ children: ReactElement, overriddenMessages?: Translations },
+  { children, overriddenTranlations }:{ children: ReactElement, overriddenTranlations?: Translations },
 ) {
   return (
-    <BaseIntlProvider messages={{ ...translation, ...overriddenMessages }} locale="en" defaultLocale="en">
+    <BaseIntlProvider messages={{ ...translation, ...overriddenTranlations }} locale="en" defaultLocale="en">
       {children}
     </BaseIntlProvider>
   );
 }
 
 IntlProvider.defaultProps = {
-  overriddenMessages: undefined,
+  overriddenTranlations: undefined,
 };
 
 export function Message({ id, values }: { id: string, values?: Record<string, string> }) {
