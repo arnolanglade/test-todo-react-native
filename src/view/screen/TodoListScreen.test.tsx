@@ -8,13 +8,13 @@ import {
   render, screen,
 } from '@testing-library/react-native';
 import TodoListScreen from './TodoListScreen';
-import { container, ContainerContext } from '../../app/ContainerContext';
-import TodoItemDetailScreen from './TodoItemDetailScreen';
+import { container } from '../../app/ContainerContext';
 import { createWrapper } from '../../app/TestUtils';
+import { createNavigationMock, createRouteParams } from '../../app/NavigationUtils';
 
 it('renders the todo list with a item', () => {
   render(
-    <TodoListScreen />,
+    <TodoListScreen navigation={createNavigationMock<'Home'>()} route={createRouteParams<'Home'>('Home', undefined)} />,
     { wrapper: createWrapper(container) },
   );
 

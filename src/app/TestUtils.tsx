@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack/src/types';
 import { ContainerContext, ServiceContainer } from './ContainerContext';
+import { RootStackParamList } from './RootStackListType';
 
 export const container = (services: Partial<ServiceContainer>): ServiceContainer => ({
   queryTodoList: jest.fn(),

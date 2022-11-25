@@ -12,6 +12,7 @@ export default function TodoItemDetailScreen({ route }: Props) {
   return (
     <View>
       <Text testID="label">{todoItem?.label}</Text>
+      <Text>{todoItem?.id}</Text>
     </View>
   );
 }
