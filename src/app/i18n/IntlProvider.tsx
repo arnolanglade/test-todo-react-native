@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
-import { IntlProvider as BaseIntlProvider } from 'react-intl';
+import { IntlProvider as BaseIntlProvider, useIntl as useBaseIntl } from 'react-intl';
 
 type Translations = Record<string, string>;
 
 const messages: Translations = {
-  text: 'This is a test',
+  todoListTitle: 'Todo List',
+  assigneeTitle: 'Assignees',
 };
 
 export default function IntlProvider(
@@ -19,4 +20,12 @@ export default function IntlProvider(
 
 IntlProvider.defaultProps = {
   overriddenMessages: undefined,
+};
+
+export const useIntl = () => {
+  const intl = useBaseIntl();
+
+  return {
+    message: (id: string, values: Record<string, string> = {}): string => intl.formatMessage({ id }, values),
+  };
 };

@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { ContainerContext, ServiceContainer } from '../ContainerContext';
+import IntlProvider from '../i18n/IntlProvider';
 
 export const container = (services: Partial<ServiceContainer>): ServiceContainer => ({
   queryTodoList: jest.fn(),
@@ -13,9 +14,11 @@ export const createWrapper = (serviceContainer: Partial<ServiceContainer>) => fu
 ) {
   return (
     <ContainerContext.Provider value={container(serviceContainer)}>
-      <NavigationContainer>
-        {children}
-      </NavigationContainer>
+      <IntlProvider>
+        <NavigationContainer>
+          {children}
+        </NavigationContainer>
+      </IntlProvider>
     </ContainerContext.Provider>
   );
 };
