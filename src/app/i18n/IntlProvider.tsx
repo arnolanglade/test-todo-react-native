@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import { IntlProvider as BaseIntlProvider, useIntl as useBaseIntl, FormattedMessage } from 'react-intl';
 
-type Translations = Record<string, string>;
+export type Translations = Record<string, string>;
 
 const messages: Translations = {
-  todoListTitle: 'Todo List',
+  todoListTitle: 'Todo Lists',
   assigneeTitle: 'Assignees',
 };
 

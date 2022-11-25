@@ -15,7 +15,7 @@ import { createNavigationMock, createRouteParams } from '../../app/testing/Navig
 it('renders the todo list with a item', () => {
   render(
     <TodoListScreen navigation={createNavigationMock<'TodoList'>()} route={createRouteParams<'TodoList'>('TodoList', undefined)} />,
-    { wrapper: createWrapper(container) },
+    { wrapper: createWrapper(container, { todoListTitle: 'Todo List' }) },
   );
 
   expect(screen.getByText('label')).toBeTruthy();
