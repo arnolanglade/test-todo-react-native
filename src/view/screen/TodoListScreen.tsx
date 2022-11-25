@@ -4,10 +4,10 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { FormattedMessage } from 'react-intl';
 import { TodoItem } from '../../domain/TodoList';
 import { useTodoList } from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
+import { Message } from '../../app/i18n/IntlProvider';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TodoList'>;
 
@@ -32,7 +32,7 @@ export default function TodoListScreen({ navigation }: Props) {
       }}
     >
       <Text>
-        <FormattedMessage id="todoListTitle" />
+        <Message id="todoListTitle" />
       </Text>
       <View style={{ flex: 1, backgroundColor: 'salmon' }}>
         <FastImage

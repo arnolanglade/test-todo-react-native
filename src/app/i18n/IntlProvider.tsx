@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { IntlProvider as BaseIntlProvider, useIntl as useBaseIntl } from 'react-intl';
+import { IntlProvider as BaseIntlProvider, useIntl as useBaseIntl, FormattedMessage } from 'react-intl';
 
 type Translations = Record<string, string>;
 
@@ -28,4 +28,12 @@ export const useIntl = () => {
   return {
     message: (id: string, values: Record<string, string> = {}): string => intl.formatMessage({ id }, values),
   };
+};
+
+export function Message({ id, values }: { id: string, values?: Record<string, string> }) {
+  return <FormattedMessage id={id} values={values} />;
+}
+
+Message.defaultProps = {
+  values: {},
 };
