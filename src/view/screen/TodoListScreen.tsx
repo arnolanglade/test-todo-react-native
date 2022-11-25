@@ -8,7 +8,7 @@ import { TodoItem } from '../../domain/TodoList';
 import { useTodoList } from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'TodoList'>;
 
 export default function TodoListScreen({ navigation }: Props) {
   const { todoList } = useTodoList();

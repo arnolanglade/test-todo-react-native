@@ -4,7 +4,7 @@ enum Page {
 }
 
 export type RootStackParamList = {
-  Home: undefined;
+  TodoList: undefined;
   Item: { id: number };
   Assignee: undefined;
 };
