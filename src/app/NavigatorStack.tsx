@@ -7,12 +7,17 @@ import { RootStackParamList } from './RootStackListType';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+function AssigneeListScreen() {
+  return null;
+}
+
 function NavigatorStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={TodoListScreen} />
         <Stack.Screen name="Item" component={TodoItemDetailScreen} />
+        <Stack.Screen name="Assignee" component={AssigneeListScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
