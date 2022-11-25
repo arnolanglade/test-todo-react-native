@@ -1,10 +1,9 @@
-enum Page {
-  Home,
-  Item,
-}
-
 export type RootStackParamList = {
-  TodoList: undefined;
+  Tab: TabStackParamList,
   Item: { id: number };
-  Assignee: undefined;
+};
+
+export type TabStackParamList = {
+  TodoList: never;
+  Assignee: never;
 };
