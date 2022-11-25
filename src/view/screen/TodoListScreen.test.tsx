@@ -19,4 +19,5 @@ it('renders the todo list with a item', () => {
   );
 
   expect(screen.getByText('label')).toBeTruthy();
+  expect(screen.getByText('Todo List')).toBeTruthy();
 });

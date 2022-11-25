@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { FormattedMessage } from 'react-intl';
 import { TodoItem } from '../../domain/TodoList';
 import { useTodoList } from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
@@ -30,6 +31,9 @@ export default function TodoListScreen({ navigation }: Props) {
         flexDirection: 'row',
       }}
     >
+      <Text>
+        <FormattedMessage id="todoListTitle" />
+      </Text>
       <View style={{ flex: 1, backgroundColor: 'salmon' }}>
         <FastImage
           style={{ width: '100%', height: '100%' }}
