@@ -8,6 +8,14 @@ const messages: Translations = {
   assigneeTitle: 'Assignees',
 };
 
+export const useIntl = () => {
+  const intl = useBaseIntl();
+
+  return {
+    message: (id: string, values: Record<string, string> = {}): string => intl.formatMessage({ id }, values),
+  };
+};
+
 export default function IntlProvider(
   { children, overriddenMessages }:{ children: ReactElement, overriddenMessages?: Translations },
 ) {
@@ -20,14 +28,6 @@ export default function IntlProvider(
 
 IntlProvider.defaultProps = {
   overriddenMessages: undefined,
-};
-
-export const useIntl = () => {
-  const intl = useBaseIntl();
-
-  return {
-    message: (id: string, values: Record<string, string> = {}): string => intl.formatMessage({ id }, values),
-  };
 };
 
 export function Message({ id, values }: { id: string, values?: Record<string, string> }) {
