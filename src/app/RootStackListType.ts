@@ -1,9 +1,6 @@
 export type RootStackParamList = {
-  Tab: TabStackParamList,
+  Tab: undefined,
   Item: { id: number };
-};
-
-export type TabStackParamList = {
-  TodoList: never;
-  Assignee: never;
+  TodoList: undefined;
+  Assignee: undefined;
 };

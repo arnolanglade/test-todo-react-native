@@ -4,10 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TodoListScreen from '../view/screen/TodoListScreen';
 import TodoItemDetailScreen from '../view/screen/TodoItemDetailScreen';
-import { RootStackParamList, TabStackParamList } from './RootStackListType';
+import { RootStackParamList } from './RootStackListType';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const Tab = createBottomTabNavigator<TabStackParamList>();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 function AssigneeListScreen() {
   return null;

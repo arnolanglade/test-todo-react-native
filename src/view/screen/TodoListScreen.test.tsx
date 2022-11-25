@@ -14,7 +14,7 @@ import { createNavigationMock, createRouteParams } from '../../app/testing/Navig
 
 it('renders the todo list with a item', () => {
   render(
-    <TodoListScreen navigation={createNavigationMock<'Home'>()} route={createRouteParams<'Home'>('Home', undefined)} />,
+    <TodoListScreen navigation={createNavigationMock<'TodoList'>()} route={createRouteParams<'TodoList'>('TodoList', undefined)} />,
     { wrapper: createWrapper(container) },
   );
 
