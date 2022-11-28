@@ -35,4 +35,13 @@ describe('Intl Provider', () => {
 
     expect(screen.getByText('translation message')).toBeTruthy();
   });
+
+  it('renders the Translation tag with value', () => {
+    render(
+      <Text><Translation id="mytranslationKey" values={{ message: 'here is my value' }} /></Text>,
+      { wrapper: createWrapper(container, { mytranslationKey: 'translation {message}' }) },
+    );
+
+    expect(screen.getByText('translation here is my value')).toBeTruthy();
+  });
 });
