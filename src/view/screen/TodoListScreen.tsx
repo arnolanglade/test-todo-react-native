@@ -5,7 +5,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TodoItem } from '../../domain/TodoList';
-import { useTodoList } from '../../usecase/UseTodoList';
+import useTodoList from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
 import { Translation } from '../../app/i18n/IntlProvider';
 

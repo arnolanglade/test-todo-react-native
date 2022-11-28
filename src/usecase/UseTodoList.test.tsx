@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react-native';
 import { createWrapper } from '../app/testing/WrapperUtils';
 import { TodoList, TodoStatus } from '../domain/TodoList';
-import { useTodoList } from './UseTodoList';
+import useTodoList from './UseTodoList';
 
 export const aTodoList = () : TodoList => [{
   id: 1,
