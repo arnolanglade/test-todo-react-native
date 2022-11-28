@@ -3,7 +3,7 @@ import { TodoItem, TodoList } from '../domain/TodoList';
 import { queryTodoList, queryTodoItem } from '../service/QueryTodoList';
 
 export type ServiceContainer = undefined | {
-  queryTodoList: () => TodoList,
+  queryTodoList: () => Promise<TodoList>,
   queryTodoItem: (id:number) => TodoItem
 };
 

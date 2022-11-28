@@ -5,19 +5,19 @@
 import 'react-native';
 import React from 'react';
 import {
-  render, screen,
+  render, screen, waitFor,
 } from '@testing-library/react-native';
 import TodoListScreen from './TodoListScreen';
-import { container } from '../../app/ContainerContext';
 import { createWrapper } from '../../app/testing/WrapperUtils';
 import { createNavigationMock, createRouteParams } from '../../app/testing/NavigationUtils';
+import { aTodoList } from '../../usecase/UseTodoList.test';
 
-it('renders the todo list with a item', () => {
+it('renders the todo list with a item', async () => {
   render(
     <TodoListScreen navigation={createNavigationMock<'TodoList'>()} route={createRouteParams<'TodoList'>('TodoList', undefined)} />,
-    { wrapper: createWrapper(container, { todoListTitle: 'Todo List' }) },
+    { wrapper: createWrapper({ queryTodoList: () => Promise.resolve(aTodoList()) }, { todoListTitle: 'Todo List' }) },
   );
 
-  expect(screen.getByText('label')).toBeTruthy();
+  await waitFor(() => expect(screen.getByText('label')).toBeTruthy());
   expect(screen.getByText('Todo List')).toBeTruthy();
 });

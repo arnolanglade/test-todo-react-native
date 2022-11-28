@@ -4,13 +4,13 @@
 
 import 'react-native';
 import {
-  renderHook,
+  renderHook, waitFor,
 } from '@testing-library/react-native';
 import { createWrapper } from '../app/testing/WrapperUtils';
 import { TodoList, TodoStatus } from '../domain/TodoList';
 import { useTodoList } from './UseTodoList';
 
-const aTodoList = () : TodoList => [{
+export const aTodoList = () : TodoList => [{
   id: 1,
   label: 'label',
   description: 'description',
@@ -25,20 +25,20 @@ const aTodoList = () : TodoList => [{
 
 const emptyList = () : TodoList => [];
 
-it('should return empty list', () => {
+it('should return empty list', async () => {
   const todolist = renderHook(
     () => useTodoList(),
-    { wrapper: createWrapper({ queryTodoList: emptyList }) },
+    { wrapper: createWrapper({ queryTodoList: () => Promise.resolve(emptyList()) }) },
   );
 
-  expect(todolist.result.current.todoList).toEqual(emptyList());
+  await waitFor(() => expect(todolist.result.current.todoList).toEqual(emptyList()));
 });
 
-it('should return todo items', () => {
+it('should return todo items', async () => {
   const todolist = renderHook(
     () => useTodoList(),
-    { wrapper: createWrapper({ queryTodoList: aTodoList }) },
+    { wrapper: createWrapper({ queryTodoList: () => Promise.resolve(aTodoList()) }) },
   );
 
-  expect(todolist.result.current.todoList).toEqual(aTodoList());
+  await waitFor(() => expect(todolist.result.current.todoList).toEqual(aTodoList()));
 });
