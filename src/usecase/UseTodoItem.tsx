@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ContainerContext } from '../app/ContainerContext';
 import { TodoItem } from '../domain/TodoList';
 
-export const useTodoItem = (id:number) => {
+export default function useTodoItem(id:number) {
   const { queryTodoItem } = useContext(ContainerContext);
   const [todoItem, setTodoItem] = useState<TodoItem>();
 
@@ -13,4 +13,4 @@ export const useTodoItem = (id:number) => {
   return {
     todoItem,
   };
-};
+}
