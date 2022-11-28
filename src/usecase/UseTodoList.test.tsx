@@ -4,6 +4,7 @@
 
 import 'react-native';
 import {
+  cleanup,
   renderHook, waitFor,
 } from '@testing-library/react-native';
 import { createWrapper } from '../app/testing/WrapperUtils';
@@ -32,6 +33,7 @@ it('should return empty list', async () => {
   );
 
   await waitFor(() => expect(todolist.result.current.todoList).toEqual(emptyList()));
+  cleanup();
 });
 
 it('should return todo items', async () => {
@@ -41,4 +43,5 @@ it('should return todo items', async () => {
   );
 
   await waitFor(() => expect(todolist.result.current.todoList).toEqual(aTodoList()));
+  cleanup();
 });
