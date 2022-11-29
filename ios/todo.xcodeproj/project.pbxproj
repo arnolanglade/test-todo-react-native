@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-todo-todoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-todo-todoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8680644D29365F97000E480C /* RCTSecureEnclaveModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8680644C29365F97000E480C /* RCTSecureEnclaveModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		5B7EB9410499542E8C5724F5 /* Pods-todo-todoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo-todoTests.debug.xcconfig"; path = "Target Support Files/Pods-todo-todoTests/Pods-todo-todoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-todo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-todo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = todo/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8680644B29365F2F000E480C /* RCTSecureEnclaveModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTSecureEnclaveModule.h; sourceTree = "<group>"; };
+		8680644C29365F97000E480C /* RCTSecureEnclaveModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTSecureEnclaveModule.m; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-todo-todoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo-todoTests.release.xcconfig"; path = "Target Support Files/Pods-todo-todoTests/Pods-todo-todoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -92,6 +95,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				8680644B29365F2F000E480C /* RCTSecureEnclaveModule.h */,
+				8680644C29365F97000E480C /* RCTSecureEnclaveModule.m */,
 			);
 			name = todo;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8680644D29365F97000E480C /* RCTSecureEnclaveModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
