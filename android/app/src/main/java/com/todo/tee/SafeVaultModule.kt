@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import android.util.Log
 
-class TeeModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class SafeVaultModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName() = "TeeModule"
 
     @ReactMethod

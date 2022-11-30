@@ -12,7 +12,7 @@ import com.facebook.soloader.SoLoader;
 import com.todo.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import com.todo.tee.TeePackage;
+import com.todo.tee.SafeVaultPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
