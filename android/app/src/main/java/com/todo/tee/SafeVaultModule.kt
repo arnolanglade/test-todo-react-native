@@ -7,10 +7,27 @@ import com.facebook.react.bridge.ReactMethod
 import android.util.Log
 
 class SafeVaultModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-    override fun getName() = "TeeModule"
+    override fun getName() = "SaveVaultModule"
 
     @ReactMethod
-    fun initTee(name: String) {
-        Log.d("TeeModule", "Init Tee: $name")
+    fun savePin(pin: String) {
+
+        val masterKey: KeyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+        val mainKeyAlias: String = MasterKeys.getOrCreate(masterKey)
+        val sharedPrefsFile: String = "encrypted_file"
+
+        val sharedPreferences: SharedPreferences =
+            EncryptedSharedPreferences.create(
+                sharedPrefsFile,
+                mainKeyAlias,
+                reactContext,
+                PrefKeyEncryptionScheme.AES256_SIV,
+                PrefValueEncryptionScheme.AES256_GCM
+            )
+
+        sharedPreferences.edit().apply {
+            putString("key", "value")
+        }.apply()
+        sharedPreferences.getString("key", "default")
     }
 }
