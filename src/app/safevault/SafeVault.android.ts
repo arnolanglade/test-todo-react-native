@@ -1,9 +1,10 @@
 import { NativeModules } from 'react-native';
 
-const { TeeModule } = NativeModules;
+const { SaveVaultModule } = NativeModules;
 
 interface SafeVault {
-  initTee(name: string): void;
+  savePin(name: string): void;
+  checkPin(name: string): Boolean;
 }
 
-export default TeeModule as SafeVault;
+export default SaveVaultModule as SafeVault;

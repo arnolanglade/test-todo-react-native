@@ -1,12 +1,16 @@
 package com.todo.tee
-import com.facebook.react.bridge.NativeModule
+import android.content.SharedPreferences
+import android.security.keystore.KeyGenParameterSpec
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import android.util.Log
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.EncryptedSharedPreferences.PrefKeyEncryptionScheme
+import androidx.security.crypto.EncryptedSharedPreferences.PrefValueEncryptionScheme
+import androidx.security.crypto.MasterKeys
 
-class SafeVaultModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class SafeVaultModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName() = "SaveVaultModule"
 
     @ReactMethod
@@ -31,6 +35,11 @@ class SafeVaultModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
         val valueKey = sharedPreferences.getString("key", "default")
 
-        log.i("Info : ", valueKey)
+        Log.i("SafeVaultModule", "" + valueKey)
+    }
+
+    @ReactMethod
+    fun checkPin(pin: String) : Boolean {
+        return true
     }
 }

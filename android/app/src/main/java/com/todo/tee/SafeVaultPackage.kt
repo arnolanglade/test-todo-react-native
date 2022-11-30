@@ -15,5 +15,5 @@ class SafeVaultPackage : ReactPackage {
 
     override fun createNativeModules(
             reactContext: ReactApplicationContext
-    ): MutableList<NativeModule> = listOf(TeeModule(reactContext)).toMutableList()
+    ): MutableList<NativeModule> = listOf(SafeVaultModule(reactContext)).toMutableList()
 }
