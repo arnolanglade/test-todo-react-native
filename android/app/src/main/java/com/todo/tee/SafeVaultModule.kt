@@ -28,6 +28,9 @@ class SafeVaultModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
         sharedPreferences.edit().apply {
             putString("key", "value")
         }.apply()
-        sharedPreferences.getString("key", "default")
+
+        val valueKey = sharedPreferences.getString("key", "default")
+
+        log.i("Info : ", valueKey)
     }
 }
