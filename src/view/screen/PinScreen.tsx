@@ -20,7 +20,11 @@ export default function PinScreen() {
       <Button
         title="verify"
         onPress={async () => {
-          setIsPinVerified(await SafeVault.verifyPin(verifyPin));
+          try {
+            setIsPinVerified(await SafeVault.verifyPin(verifyPin));
+          } catch (e) {
+            setIsPinVerified(false);
+          }
         }}
       />
     </View>
