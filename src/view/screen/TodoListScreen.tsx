@@ -8,7 +8,6 @@ import { TodoItem } from '../../domain/TodoList';
 import useTodoList from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
 import { Translation } from '../../app/i18n/IntlProvider';
-import SafeVault from '../../app/safevault/SafeVault';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TodoList'>;
 
