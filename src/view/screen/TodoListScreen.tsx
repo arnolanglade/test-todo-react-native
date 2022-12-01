@@ -9,6 +9,8 @@ import useTodoList from '../../usecase/UseTodoList';
 import { RootStackParamList } from '../../app/RootStackListType';
 import { Translation } from '../../app/i18n/IntlProvider';
 
+import SafeVault from '../../app/safevault/SafeVault.ios';
+
 type Props = NativeStackScreenProps<RootStackParamList, 'TodoList'>;
 
 export default function TodoListScreen({ navigation }: Props) {
@@ -19,6 +21,8 @@ export default function TodoListScreen({ navigation }: Props) {
       id,
     });
   };
+  console.log('SafeVault :', SafeVault);
+  console.log('SafeVault method :', SafeVault.savePin);
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
     <TouchableOpacity
