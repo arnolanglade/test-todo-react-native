@@ -30,14 +30,20 @@ class SafeVaultModule(private val reactContext: ReactApplicationContext) : React
     }
 
     @ReactMethod
-    fun savePin(pin: String) {
-        val sharedPreferences = openSharedPreferencesInstance()
+    fun savePin(pin: String, promise:Promise) {
+        try {
+            val sharedPreferences = openSharedPreferencesInstance()
 
-        sharedPreferences.edit().apply {
-            putString("pin", pin)
-        }.apply()
+            sharedPreferences.edit().apply {
+                putString("pin", pin)
+            }.apply()
 
-        Log.i("SafeVaultModule", "Pin " + pin + " saved")
+            Log.i("SafeVaultModule", "Pin " + pin + " saved")
+
+            promise.resolve(true)
+        } catch (e: Throwable) {
+            promise.reject(e)
+        }
     }
 
     @ReactMethod

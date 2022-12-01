@@ -3,7 +3,7 @@ import { NativeModules } from 'react-native';
 const { SaveVaultModule } = NativeModules;
 
 interface SafeVault {
-  savePin(name: string): void;
+  savePin(name: string): Promise<void>;
   checkPin(name: string): Promise<boolean>;
 }
 
