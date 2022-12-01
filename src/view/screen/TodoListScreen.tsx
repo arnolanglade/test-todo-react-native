@@ -22,6 +22,12 @@ export default function TodoListScreen({ navigation }: Props) {
   };
 
   SafeVault.savePin('1234');
+  SafeVault.checkPin('1234', (isEqual:boolean) => {
+    console.log('Check if 1234 is the right pin : ', isEqual);
+  });
+  SafeVault.checkPin('1235', (isEqual:boolean) => {
+    console.log('Check if 1235 is the right pin : ', isEqual);
+  });
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
     <TouchableOpacity
