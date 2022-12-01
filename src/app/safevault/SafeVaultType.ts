@@ -1,5 +1,5 @@
 export interface SafeVault {
-  savePin(name: string): void;
+  savePin(name: string): Promise<boolean>;
 
-  checkPin(name: string, callback: (isEqual: boolean) => void): boolean;
+  checkPin(name: string): Promise<boolean>;
 }

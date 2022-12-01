@@ -11,14 +11,15 @@ import Foundation
 class SafeVaultModule: NSObject {
   
   @objc
-  func savePin(_ name: String) -> Void {
+  func savePin(_ name: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     print("inside savePin method with \(name)")
+    resolve(true)
   }
   
   @objc
-  func checkPin(_ name: String, _ callback: RCTResponseSenderBlock) -> Void {
+  func checkPin(_ name: String, resolve: RCTPromiseResolveBlock, åreject: RCTPromiseRejectBlock) {
     print("inside checkPin method with \(name)")
-    callback([false])
+    resolve(false)
   }
   
   @objc
