@@ -9,16 +9,16 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences.PrefKeyEncryptionScheme
 import androidx.security.crypto.EncryptedSharedPreferences.PrefValueEncryptionScheme
 import androidx.security.crypto.MasterKeys
-import com.facebook.react.bridge.Callback
+import com.facebook.react.bridge.Promise
 
 
 class SafeVaultModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName() = "SaveVaultModule"
 
-    fun openSharedPreferencesInstance() : SharedPreferences {
+    private fun openSharedPreferencesInstance() : SharedPreferences {
         val masterKey: KeyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
         val mainKeyAlias: String = MasterKeys.getOrCreate(masterKey)
-        val sharedPrefsFile: String = "encrypted_file"
+        val sharedPrefsFile: String = "wallet"
 
         return EncryptedSharedPreferences.create(
                 sharedPrefsFile,
@@ -37,18 +37,18 @@ class SafeVaultModule(private val reactContext: ReactApplicationContext) : React
             putString("pin", pin)
         }.apply()
 
-        val valueKey = sharedPreferences.getString("pin", "default")
-
-        //Log.i("SafeVaultModule", "" + valueKey)
+        Log.i("SafeVaultModule", "Pin " + pin + " saved")
     }
 
     @ReactMethod
-    fun checkPin(pin: String,callback: Callback) {
-        val sharedPreferences = openSharedPreferencesInstance()
+    fun checkPin(pin: String, promise: Promise) {
+        try {
+            val sharedPreferences = openSharedPreferencesInstance()
 
-        val savedPin = sharedPreferences.getString("pin", "default")
-        Log.i("SafeVaultModule", "Pin retrieved : " + savedPin + " - " + pin)
-        Log.i("SafeVaultModule", "Is equals " + savedPin.equals(pin))
-        callback.invoke(savedPin.equals(pin))
+            val savedPin = sharedPreferences.getString("pin", "default")
+            promise.resolve(savedPin.equals(pin))
+        } catch (e: Throwable) {
+            promise.reject(e)
+        }
     }
 }

@@ -4,7 +4,7 @@ const { SaveVaultModule } = NativeModules;
 
 interface SafeVault {
   savePin(name: string): void;
-  checkPin(name: string, callback:(isEqual:boolean) => void): boolean;
+  checkPin(name: string): Promise<boolean>;
 }
 
 export default SaveVaultModule as SafeVault;
