@@ -15,7 +15,7 @@ export default function PinScreen() {
     <View>
       <TextInput onChangeText={(pin) => setSavedPin(pin)} value={savedPin} keyboardType="number-pad" />
       <Button title="save" onPress={() => SafeVault.savePin(savedPin)} />
-      <Text>{isPinVerified ? 'Le pin est bon' : "Le pin n'est pas bon"}</Text>
+      {isPinVerified && <Text>{isPinVerified ? 'Le pin est bon' : "Le pin n'est pas bon"}</Text>}
       <TextInput onChangeText={(pin) => setVerifyPin(pin)} value={verifyPin} keyboardType="number-pad" />
       <Button
         title="verify"
