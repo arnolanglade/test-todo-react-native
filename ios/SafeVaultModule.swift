@@ -17,7 +17,7 @@ class SafeVaultModule: NSObject {
   }
   
   @objc
-  func checkPin(_ name: String, resolve: RCTPromiseResolveBlock, åreject: RCTPromiseRejectBlock) {
+  func checkPin(_ name: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     print("inside checkPin method with \(name)")
     resolve(false)
   }
