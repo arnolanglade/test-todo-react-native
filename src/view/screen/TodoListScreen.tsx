@@ -21,8 +21,6 @@ export default function TodoListScreen({ navigation }: Props) {
       id,
     });
   };
-  console.log('SafeVault :', SafeVault);
-  console.log('SafeVault method :', SafeVault.savePin);
 
   const renderTodoItem = ({ item }: { item: TodoItem }): ReactElement => (
     <TouchableOpacity
