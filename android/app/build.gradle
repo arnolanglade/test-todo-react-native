@@ -273,7 +273,7 @@ dependencies {
     implementation("androidx.security:security-crypto:1.0.0")
 
     // Bcrypt
-    implementation "org.mindrot:jbcrypt:0.4"
+    implementation 'org.springframework.security:spring-security-core:6.0.0'
 
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'

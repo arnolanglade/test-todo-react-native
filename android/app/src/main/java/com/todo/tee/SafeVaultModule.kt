@@ -10,7 +10,7 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import org.mindrot.jbcrypt.BCrypt
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 
 class SafeVaultModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -34,7 +34,7 @@ class SafeVaultModule(private val reactContext: ReactApplicationContext) : React
     fun savePin(pin: String, promise:Promise) {
         try {
             val sharedPreferences = openSharedPreferencesInstance()
-            val hashedPin = BCrypt.hashpw(pin, BCrypt.gensalt())
+            val hashedPin = BCryptPasswordEncoder().encode(pin)
 
             sharedPreferences.edit().apply {
                 putString("pin", hashedPin)
@@ -58,7 +58,7 @@ class SafeVaultModule(private val reactContext: ReactApplicationContext) : React
 
             Log.i("SafeVaultModule", "Hashed Pin " + hashedPin + " saved")
 
-            promise.resolve(BCrypt.checkpw(pin, hashedPin))
+            promise.resolve(BCryptPasswordEncoder().matches(pin, hashedPin))
         } catch (e: Throwable) {
             promise.reject(e)
         }
