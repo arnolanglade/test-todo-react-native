@@ -15,7 +15,7 @@
 		7699B88040F8A987B510C191 /* libPods-todo-todoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-todo-todoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		86E7788E2938A8680017055D /* SafeVaultModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E7788D2938A8680017055D /* SafeVaultModule.swift */; };
-		86E778902938AA1D0017055D /* RCTSafeVaultModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7788F2938AA1D0017055D /* RCTSafeVaultModule.m */; };
+		86E778902938AA1D0017055D /* SafeVaultModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7788F2938AA1D0017055D /* SafeVaultModuleBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = todo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86E7788C2938A8670017055D /* todo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "todo-Bridging-Header.h"; sourceTree = "<group>"; };
 		86E7788D2938A8680017055D /* SafeVaultModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeVaultModule.swift; sourceTree = "<group>"; };
-		86E7788F2938AA1D0017055D /* RCTSafeVaultModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTSafeVaultModule.m; sourceTree = "<group>"; };
+		86E7788F2938AA1D0017055D /* SafeVaultModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeVaultModuleBridge.m; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-todo-todoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo-todoTests.release.xcconfig"; path = "Target Support Files/Pods-todo-todoTests/Pods-todo-todoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -99,7 +99,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				86E7788D2938A8680017055D /* SafeVaultModule.swift */,
 				86E7788C2938A8670017055D /* todo-Bridging-Header.h */,
-				86E7788F2938AA1D0017055D /* RCTSafeVaultModule.m */,
+				86E7788F2938AA1D0017055D /* SafeVaultModuleBridge.m */,
 			);
 			name = todo;
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				86E778902938AA1D0017055D /* RCTSafeVaultModule.m in Sources */,
+				86E778902938AA1D0017055D /* SafeVaultModuleBridge.m in Sources */,
 				86E7788E2938A8680017055D /* SafeVaultModule.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);

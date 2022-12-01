@@ -1,6 +1,6 @@
 import { NativeModules } from 'react-native';
 import { SafeVault } from './SafeVaultType';
 
-const { SaveVaultModule } = NativeModules;
+const { SafeVaultModule } = NativeModules;
 
-export default SaveVaultModule as SafeVault;
+export default SafeVaultModule as SafeVault;

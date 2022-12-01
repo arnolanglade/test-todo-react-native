@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import {
   Alert,
-  Button, Text,
-  TextInput,
+  Button, TextInput,
   View,
 } from 'react-native';
-import SafeVault from '../../app/safevault/SafeVault';
+import SafeVault from '../../app/safevault/SafeVault.android';
 
 export default function PinScreen() {
   const [savedPin, setSavedPin] = useState<string>('');

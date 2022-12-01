@@ -13,7 +13,7 @@ import com.facebook.react.bridge.Promise
 
 
 class SafeVaultModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-    override fun getName() = "SaveVaultModule"
+    override fun getName() = "SafeVaultModule"
 
     private fun openSharedPreferencesInstance() : SharedPreferences {
         val masterKey: KeyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
