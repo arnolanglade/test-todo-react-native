@@ -42,7 +42,7 @@ function NavigatorStack() {
             </>
           )
           : (
-            <Stack.Screen name="Offline" component={Offline} />
+            <Stack.Screen options={{ headerShown: false }} name="Offline" component={Offline} />
           )}
       </Stack.Navigator>
     </NavigationContainer>
