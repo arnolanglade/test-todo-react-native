@@ -6,11 +6,11 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences.PrefKeyEncryptionScheme
 import androidx.security.crypto.EncryptedSharedPreferences.PrefValueEncryptionScheme
 import androidx.security.crypto.MasterKeys
+import com.bcrypt.BCrypt
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 
 class SafeVaultModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -34,14 +34,16 @@ class SafeVaultModule(private val reactContext: ReactApplicationContext) : React
     fun savePin(pin: String, promise:Promise) {
         try {
             val sharedPreferences = openSharedPreferencesInstance()
-            val hashedPin = BCryptPasswordEncoder().encode(pin)
+            val hashedPin = BCrypt.hashpw(pin, BCrypt.gensalt())
+
+            Log.i("SafeVaultModule", "Hashed Pin " + hashedPin + " saved")
+
 
             sharedPreferences.edit().apply {
                 putString("pin", hashedPin)
             }.apply()
 
             Log.i("SafeVaultModule", "Pin " + pin + " saved")
-            Log.i("SafeVaultModule", "Hashed Pin " + hashedPin + " saved")
 
             promise.resolve(true)
         } catch (e: Throwable) {
@@ -58,7 +60,7 @@ class SafeVaultModule(private val reactContext: ReactApplicationContext) : React
 
             Log.i("SafeVaultModule", "Hashed Pin " + hashedPin + " saved")
 
-            promise.resolve(BCryptPasswordEncoder().matches(pin, hashedPin))
+            promise.resolve(BCrypt.checkpw(pin, hashedPin))
         } catch (e: Throwable) {
             promise.reject(e)
         }
