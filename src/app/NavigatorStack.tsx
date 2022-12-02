@@ -9,6 +9,7 @@ import { RootStackParamList } from './RootStackListType';
 import { useIntl } from './i18n/IntlProvider';
 import PinScreen from '../view/screen/PinScreen';
 import Offline from '../view/screen/OfflineScreen';
+import useAuthentication from '../usecase/useAuthentication';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -29,12 +30,12 @@ function TabNavigator() {
 }
 
 function NavigatorStack() {
-  const [isOnline, setIsOnline] = useState<boolean>(false);
+  const { isLoggedIn } = useAuthentication();
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isOnline
+        {isLoggedIn
           ? (
             <>
               <Stack.Screen name="Tab" component={TabNavigator} />

@@ -14,18 +14,21 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { container, ContainerContext } from './app/ContainerContext';
 import NavigatorStack from './app/NavigatorStack';
 import IntlProvider from './app/i18n/IntlProvider';
+import { containerAuth, AuthContext } from './app/context/AuthContext';
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <ContainerContext.Provider value={container}>
-      <IntlProvider>
-        <QueryClientProvider client={queryClient}>
-          <NavigatorStack />
-        </QueryClientProvider>
-      </IntlProvider>
-    </ContainerContext.Provider>
+    <AuthContext.Provider value={containerAuth}>
+      <ContainerContext.Provider value={container}>
+        <IntlProvider>
+          <QueryClientProvider client={queryClient}>
+            <NavigatorStack />
+          </QueryClientProvider>
+        </IntlProvider>
+      </ContainerContext.Provider>
+    </AuthContext.Provider>
   );
 }
 
