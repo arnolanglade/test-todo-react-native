@@ -9,7 +9,7 @@
 
 @interface RCT_EXTERN_MODULE(SafeVaultModule, NSObject)
 
-RCT_EXTERN_METHOD(savePin: (NSString *) name resolve: (RCTPromiseResolveBlock) resolve reject: (RCTPromiseRejectBlock) reject)
-RCT_EXTERN_METHOD(checkPin: (NSString *) name resolve: (RCTPromiseResolveBlock) resolve reject: (RCTPromiseRejectBlock) reject)
+RCT_EXTERN_METHOD(savePin: (NSString *) pin resolve: (RCTPromiseResolveBlock) resolve reject: (RCTPromiseRejectBlock) reject)
+RCT_EXTERN_METHOD(checkPin: (NSString *) pin resolve: (RCTPromiseResolveBlock) resolve reject: (RCTPromiseRejectBlock) reject)
 
 @end
