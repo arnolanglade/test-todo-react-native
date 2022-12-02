@@ -50,21 +50,22 @@ class SafeVaultModule: NSObject {
     
     
     //2. WITH THE NEW KEY, STORE THE KEY
-    let key = privateKey
-    let tag = "com.todo.keys.pinKey".data(using: .utf8)!
+    let tag = "com.todo.keys"
     let addquery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
-                                   kSecAttrApplicationTag as String: tag,
-                                   kSecValueRef as String: pin,
-                                   //add 
+                                   kSecAttrAccount as String: "pinKey",
+                                   kSecAttrService as String: tag,
+                                   kSecValueData as String: pin.data(using: .utf8)!,
     ]
     
     let status = SecItemAdd(addquery as CFDictionary, nil)
     guard status == errSecSuccess else {
+      print("Error status : \(status)")
+      print()
       reject("ERROR_CODE", "Error while saving the key", SafeVaultError.ErrorOnStoreItem)
       return
     }
     
-    print("successfully stored the key \(status)")
+    print("successfully stored the pin \(status)")
     
     resolve(true)
   }
