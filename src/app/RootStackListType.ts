@@ -4,4 +4,5 @@ export type RootStackParamList = {
   Item: { id: number };
   TodoList: undefined;
   Assignee: undefined;
+  Offline: undefined;
 };

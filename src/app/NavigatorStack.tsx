@@ -2,6 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useState } from 'react';
+import { View } from 'react-native';
 import TodoListScreen from '../view/screen/TodoListScreen';
 import TodoItemDetailScreen from '../view/screen/TodoItemDetailScreen';
 import { RootStackParamList } from './RootStackListType';
@@ -26,12 +28,28 @@ function TabNavigator() {
   );
 }
 
+function Offline() {
+  return (
+    <View style={[{ backgroundColor: 'red', height: 100, width: 100 }]} />
+  );
+}
+
 function NavigatorStack() {
+  const [isOnline, setIsOnline] = useState<boolean>(false);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Tab" component={TabNavigator} />
-        <Stack.Screen name="Item" component={TodoItemDetailScreen} />
+        {isOnline
+          ? (
+            <>
+              <Stack.Screen name="Tab" component={TabNavigator} />
+              <Stack.Screen name="Item" component={TodoItemDetailScreen} />
+            </>
+          )
+          : (
+            <Stack.Screen name="Offline" component={Offline} />
+          )}
       </Stack.Navigator>
     </NavigationContainer>
   );
