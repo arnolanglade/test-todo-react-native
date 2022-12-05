@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './RootStackListType';
 import Offline from '../view/screen/OfflineScreen';
 import Online from '../view/screen/OnlineScreen';
-import { useAuthentication } from './context/AuthContext';
+import { useAuthentication } from './auth/AuthContext';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

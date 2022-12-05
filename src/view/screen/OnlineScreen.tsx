@@ -3,7 +3,7 @@ import {
 } from 'react-native';
 import * as React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useAuthentication } from '../../app/context/AuthContext';
+import { useAuthentication } from '../../app/auth/AuthContext';
 import { RootStackParamList } from '../../app/RootStackListType';
 
 export default function Online({ navigation }: NativeStackScreenProps<RootStackParamList, 'Online'>) {

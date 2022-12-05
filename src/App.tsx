@@ -14,7 +14,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { container, ContainerContext } from './app/ContainerContext';
 import NavigatorStack from './app/NavigatorStack';
 import IntlProvider from './app/i18n/IntlProvider';
-import { AuthenticationProvider } from './app/context/AuthContext';
+import { AuthenticationProvider } from './app/auth/AuthContext';
 
 const queryClient = new QueryClient();
 
