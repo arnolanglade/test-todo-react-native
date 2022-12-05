@@ -12,7 +12,6 @@ src
 │   ├── safevault
 │   ├── ServiceContainerContext.tsx
 │   └── testing
-├── App.tsx
 ├── domain
 ├── service
 ├── usecase
@@ -21,6 +20,30 @@ src
     ├── design-system
     └── screen
 ```
+
+* `app` contains all technical assets needed to run the application.
+* `domain` contains all pieces of code used to model business problematics
+* `service` contains all pieces of code that trigger the side effects
+* `usecase` contains all hooks use by the screen
+* `view` contains all views. It could be a screen or a component used by a screen. It contains also the design system.
+
+### Coupling rules
+
+`domain` **must not** use anything
+
+`service` **must not** use `usecase` and `view`
+`service` **can** use `app` and `domain`
+
+`usecase` **must not** use `view`
+`usecase` **can** use `app`, `service` and `domain`
+
+`view/component` **must not** use `usecase`, `service` and `view/screen`
+`view/component` **can** use `domain` and `app`
+
+`view/screen` **must not** use `service`
+`view/screen` **can** use `usecase` and `app`
+
+`view/design-system` **must not** use anything except chosen third party library
 
 ## Routing
 
