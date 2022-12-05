@@ -6,14 +6,23 @@ import Offline from '../../view/screen/OfflineScreen';
 import Online from '../../view/screen/OnlineScreen';
 import { useAuthentication } from '../auth/AuthContext';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const OnlineStack = createNativeStackNavigator<RootStackParamList>();
+const OfflineStack = createNativeStackNavigator<RootStackParamList>();
 
-function OnlineStack() {
-  return <Stack.Screen options={{ headerShown: false }} name="Online" component={Online} />;
+function OnlineNavigator() {
+  return (
+    <OnlineStack.Navigator>
+      <OnlineStack.Screen options={{ headerShown: false }} name="Online" component={Online} />
+    </OnlineStack.Navigator>
+  );
 }
 
-function OfflineStack() {
-  return <Stack.Screen options={{ headerShown: false }} name="Offline" component={Offline} />;
+function OfflineNavigator() {
+  return (
+    <OfflineStack.Navigator>
+      <OfflineStack.Screen options={{ headerShown: false }} name="Offline" component={Offline} />
+    </OfflineStack.Navigator>
+  );
 }
 
 export default function NavigatorStack() {
@@ -21,9 +30,7 @@ export default function NavigatorStack() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {isLoggedIn ? <OnlineStack /> : <OfflineStack />}
-      </Stack.Navigator>
+      {isLoggedIn ? <OnlineNavigator /> : <OfflineNavigator />}
     </NavigationContainer>
   );
 }

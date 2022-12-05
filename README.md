@@ -60,17 +60,17 @@ Add a screen to the online or the offline stack
 ```jsx
 // src/app/navigation/NavigatorStack.tsx
 function OnlineStack() {
-    return <>
+    return <OnlineStack.Navigator>
         // other screens
         <Stack.Screen name="ScreenName" component={MyComponent} />
-    </>;
+    </OnlineStack.Navigator>;
 }
 
 function OfflineStack() {
-    return <>
+    return <OfflineStack.Navigator>
         // other screens
         <Stack.Screen name="ScreenName" component={MyComponent} />
-    </>;
+    </OfflineStack.Navigator>;
 }
 ```
 
