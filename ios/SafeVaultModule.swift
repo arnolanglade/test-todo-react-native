@@ -74,8 +74,41 @@ class SafeVaultModule: NSObject {
   
   @objc
   func checkPin(_ pin: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
-    print("inside checkPin method with \(pin)")
-    resolve(false)
+    
+    print("pin : \(pin)\n")
+    
+    let addquery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
+                                   kSecAttrAccount as String: "pinKey",
+                                   kSecAttrService as String: "com.todo.keys",
+                                   kSecReturnData as String: kCFBooleanTrue ?? false,
+                                   kSecMatchLimit as String: kSecMatchLimitOne
+    ]
+    
+    var result: AnyObject?
+    
+    let status = SecItemCopyMatching(addquery as CFDictionary, &result)
+    
+    guard status == errSecSuccess else {
+      print("Error status : \(status)")
+      reject("ERROR_CODE", "Error while matching the key", SafeVaultError.ErrorOnStoreItem)
+      return
+    }
+    
+    //var password = result as? Data
+    
+    guard let password = result as? Data else {
+      print("Error password undefined")
+      resolve(false)
+      return
+    }
+    
+    
+    let passwordStringified = String(decoding: password, as: UTF8.self)
+    
+    print("inside checkPin method with \(pin)\n")
+    print("Status: \(status) | result : \(passwordStringified)\n")
+    
+    resolve(pin == passwordStringified)
   }
   
   @objc
