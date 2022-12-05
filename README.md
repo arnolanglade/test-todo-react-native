@@ -34,13 +34,13 @@ src
 `service` **can** use `app` and `domain`
 
 `usecase` **must not** use `view`
-`usecase` **can** use `app`, `service` and `domain`
+`usecase` **can** use `app` and `domain`
 
 `view/component` **must not** use `usecase`, `service` and `view/screen`
-`view/component` **can** use `domain` and `app`
+`view/component` **can** use `domain`, `design-system` and `app`
 
 `view/screen` **must not** use `service`
-`view/screen` **can** use `usecase` and `app`
+`view/screen` **can** use `usecase`, `view`, `design-system` and `app`
 
 `view/design-system` **must not** use anything except chosen third party library
 
