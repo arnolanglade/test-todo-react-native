@@ -4,7 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../app/navigation/RootStackListType';
 import { useAuthentication } from '../../app/auth/AuthContext';
 
-export default function Offline({ navigation }: NativeStackScreenProps<RootStackParamList, 'Offline'>) {
+export default function Offline() {
   const { login } = useAuthentication();
 
   return (
@@ -13,7 +13,6 @@ export default function Offline({ navigation }: NativeStackScreenProps<RootStack
         title="Se connecter"
         onPress={() => {
           login();
-          navigation.navigate('Online');
         }}
       />
     </View>

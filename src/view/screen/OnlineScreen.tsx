@@ -6,7 +6,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuthentication } from '../../app/auth/AuthContext';
 import { RootStackParamList } from '../../app/navigation/RootStackListType';
 
-export default function Online({ navigation }: NativeStackScreenProps<RootStackParamList, 'Online'>) {
+export default function Online() {
   const { logout } = useAuthentication();
 
   return (
@@ -16,7 +16,6 @@ export default function Online({ navigation }: NativeStackScreenProps<RootStackP
         title="logout"
         onPress={() => {
           logout();
-          navigation.navigate('Offline');
         }}
       />
     </View>
