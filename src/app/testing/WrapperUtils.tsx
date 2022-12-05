@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ServiceContainerContext, ServiceContainer } from '../ServiceContainerContext';
 import IntlProvider, { Translations } from '../i18n/IntlProvider';
 
-export const container = (services: Partial<ServiceContainer>): ServiceContainer => ({
+export const aServiceContainer = (services: Partial<ServiceContainer> = {}): ServiceContainer => ({
   queryTodoList: jest.fn(),
   queryTodoItem: jest.fn(),
   ...services,
@@ -23,7 +23,7 @@ export const createWrapper = (serviceContainer: Partial<ServiceContainer>, trans
   { children }: { children: ReactNode },
 ) {
   return (
-    <ServiceContainerContext.Provider value={container(serviceContainer)}>
+    <ServiceContainerContext.Provider value={aServiceContainer(serviceContainer)}>
       <IntlProvider overriddenTranslations={translations}>
         <QueryClientProvider client={queryClient}>
           <NavigationContainer>
