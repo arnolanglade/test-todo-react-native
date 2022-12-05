@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BCryptSwift
 
 @objc(SafeVaultModule)
 class SafeVaultModule: NSObject {
@@ -49,6 +50,8 @@ class SafeVaultModule: NSObject {
     print("successfully created the new key \(privateKey)")
     
     //1.5 HASH DATA 
+    var hashedPassword = BCryptSwift.hashPassword(pin, BCryptSwift.generateSalt())
+    
     
     //2. ENCRYPT DATA WITH KEY
     
@@ -93,8 +96,6 @@ class SafeVaultModule: NSObject {
       reject("ERROR_CODE", "Error while matching the key", SafeVaultError.ErrorOnStoreItem)
       return
     }
-    
-    //var password = result as? Data
     
     guard let password = result as? Data else {
       print("Error password undefined")

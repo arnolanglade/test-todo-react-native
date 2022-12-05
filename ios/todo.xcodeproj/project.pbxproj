@@ -48,6 +48,7 @@
 		86E7788D2938A8680017055D /* SafeVaultModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeVaultModule.swift; sourceTree = "<group>"; };
 		86E7788F2938AA1D0017055D /* SafeVaultModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeVaultModuleBridge.m; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-todo-todoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo-todoTests.release.xcconfig"; path = "Target Support Files/Pods-todo-todoTests/Pods-todo-todoTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC08F5CA293E3B8700D2A540 /* BCrypt */ = {isa = PBXFileReference; lastKnownFileType = text; path = BCrypt; sourceTree = SOURCE_ROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -91,6 +92,7 @@
 		13B07FAE1A68108700A75B9A /* todo */ = {
 			isa = PBXGroup;
 			children = (
+				AC08F5CA293E3B8700D2A540 /* BCrypt */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
