@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ServiceContainerContext, ServiceContainer } from '../ServiceContainerContext';
 import IntlProvider, { Translations } from '../i18n/IntlProvider';
+import { AuthenticationProvider } from '../auth/AuthContext';
 
 export const aServiceContainer = (services: Partial<ServiceContainer> = {}): ServiceContainer => ({
   // Instantiate your services here...
@@ -22,14 +23,16 @@ export const createWrapper = (serviceContainer: Partial<ServiceContainer>, trans
   { children }: { children: ReactNode },
 ) {
   return (
-    <ServiceContainerContext.Provider value={aServiceContainer(serviceContainer)}>
-      <IntlProvider overriddenTranslations={translations}>
-        <QueryClientProvider client={queryClient}>
-          <NavigationContainer>
-            {children}
-          </NavigationContainer>
-        </QueryClientProvider>
-      </IntlProvider>
-    </ServiceContainerContext.Provider>
+    <AuthenticationProvider>
+      <ServiceContainerContext.Provider value={aServiceContainer(serviceContainer)}>
+        <IntlProvider overriddenTranslations={translations}>
+          <QueryClientProvider client={queryClient}>
+            <NavigationContainer>
+              {children}
+            </NavigationContainer>
+          </QueryClientProvider>
+        </IntlProvider>
+      </ServiceContainerContext.Provider>
+    </AuthenticationProvider>
   );
 };
