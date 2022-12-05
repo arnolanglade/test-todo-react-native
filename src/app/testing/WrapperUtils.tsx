@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ContainerContext, ServiceContainer } from '../ContainerContext';
+import { ServiceContainerContext, ServiceContainer } from '../ServiceContainerContext';
 import IntlProvider, { Translations } from '../i18n/IntlProvider';
 
 export const container = (services: Partial<ServiceContainer>): ServiceContainer => ({
@@ -23,7 +23,7 @@ export const createWrapper = (serviceContainer: Partial<ServiceContainer>, trans
   { children }: { children: ReactNode },
 ) {
   return (
-    <ContainerContext.Provider value={container(serviceContainer)}>
+    <ServiceContainerContext.Provider value={container(serviceContainer)}>
       <IntlProvider overriddenTranslations={translations}>
         <QueryClientProvider client={queryClient}>
           <NavigationContainer>
@@ -31,6 +31,6 @@ export const createWrapper = (serviceContainer: Partial<ServiceContainer>, trans
           </NavigationContainer>
         </QueryClientProvider>
       </IntlProvider>
-    </ContainerContext.Provider>
+    </ServiceContainerContext.Provider>
   );
 };

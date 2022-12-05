@@ -4,7 +4,7 @@ import {
   renderHook, screen,
 } from '@testing-library/react-native';
 import { Text } from 'react-native';
-import { container } from '../ContainerContext';
+import { container } from '../ServiceContainerContext';
 import { createWrapper } from '../testing/WrapperUtils';
 import { Translation, useIntl } from './IntlProvider';
 

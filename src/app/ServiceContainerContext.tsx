@@ -7,8 +7,8 @@ export type ServiceContainer = {
   queryTodoItem: (id:number) => TodoItem
 };
 
-export const ContainerContext = createContext<ServiceContainer>({} as ServiceContainer);
+export const ServiceContainerContext = createContext<ServiceContainer>({} as ServiceContainer);
 
-export const useServiceContainer = () => useContext(ContainerContext);
+export const useServiceContainer = () => useContext(ServiceContainerContext);
 
 export const container = { queryTodoList, queryTodoItem };

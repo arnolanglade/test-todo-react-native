@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react-native';
 import TodoItemDetailScreen from './TodoItemDetailScreen';
-import { container } from '../../app/ContainerContext';
+import { container } from '../../app/ServiceContainerContext';
 import { createNavigationMock, createRouteParams } from '../../app/testing/NavigationUtils';
 import { createWrapper } from '../../app/testing/WrapperUtils';
 

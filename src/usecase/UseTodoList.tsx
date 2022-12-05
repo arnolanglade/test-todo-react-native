@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { ContainerContext } from '../app/ContainerContext';
+import { ServiceContainerContext } from '../app/ServiceContainerContext';
 import { TodoList } from '../domain/TodoList';
 
 export default function useTodoList() {
-  const { queryTodoList } = useContext(ContainerContext);
+  const { queryTodoList } = useContext(ServiceContainerContext);
   const [todoList, setTodoList] = useState<TodoList>([]);
 
   useQuery({
