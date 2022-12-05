@@ -7,6 +7,12 @@ module.exports = {
       severity: "error",
       "to": { "path": ["app", "service", "usecase", "view"] }
     },
+    {
+      name: "service",
+      "from": {"path": ["service"]},
+      severity: "error",
+      "to": { "path": ["usecase", "view"] }
+    },
     /* rules from the 'recommended' preset: */
     {
       name: 'no-circular',
