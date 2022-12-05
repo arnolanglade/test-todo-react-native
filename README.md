@@ -1,5 +1,39 @@
 # Project Name
 
+## Organization
+
+TODO
+
+## Routing
+
+Declare your screen
+```ts
+// src/app/ServiceContainerContext.tsx
+export type RootStackParamList = {
+    MyComponent: undefined;
+    // other screens
+};
+
+```
+
+Add a screen to the online or the offline stack
+```jsx
+// src/app/navigation/NavigatorStack.tsx
+function OnlineStack() {
+    return <>
+        // other screens
+        <Stack.Screen name="ScreenName" component={MyComponent} />
+    </>;
+}
+
+function OfflineStack() {
+    return <>
+        // other screens
+        <Stack.Screen name="ScreenName" component={MyComponent} />
+    </>;
+}
+```
+
 ## Service container
 
 Declare your service:

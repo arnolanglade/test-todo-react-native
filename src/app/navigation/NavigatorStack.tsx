@@ -8,19 +8,21 @@ import { useAuthentication } from '../auth/AuthContext';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+function OnlineStack() {
+  return <Stack.Screen options={{ headerShown: false }} name="Online" component={Online} />;
+}
+
+function OfflineStack() {
+  return <Stack.Screen options={{ headerShown: false }} name="Offline" component={Offline} />;
+}
+
 export default function NavigatorStack() {
   const { isLoggedIn } = useAuthentication();
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isLoggedIn
-          ? (
-            <Stack.Screen options={{ headerShown: false }} name="Online" component={Online} />
-          )
-          : (
-            <Stack.Screen options={{ headerShown: false }} name="Offline" component={Offline} />
-          )}
+        {isLoggedIn ? <OnlineStack /> : <OfflineStack />}
       </Stack.Navigator>
     </NavigationContainer>
   );
