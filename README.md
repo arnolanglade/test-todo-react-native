@@ -2,7 +2,25 @@
 
 ## Organization
 
-TODO
+```
+$ tree src 
+src
+├── app
+│   ├── auth
+│   ├── i18n
+│   ├── navigation
+│   ├── safevault
+│   ├── ServiceContainerContext.tsx
+│   └── testing
+├── App.tsx
+├── domain
+├── service
+├── usecase
+└── view
+    ├── component
+    ├── design-system
+    └── screen
+```
 
 ## Routing
 
