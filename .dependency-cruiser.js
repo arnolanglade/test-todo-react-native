@@ -13,6 +13,12 @@ module.exports = {
       severity: "error",
       "to": { "path": ["usecase", "view"] }
     },
+    {
+      name: "usecase",
+      "from": {"path": ["usecase"]},
+      severity: "error",
+      "to": { "path": ["view"] }
+    },
     /* rules from the 'recommended' preset: */
     {
       name: 'no-circular',
