@@ -1,6 +1,12 @@
 /** @type {import('dependency-cruiser').IConfiguration} */
 module.exports = {
   forbidden: [
+    {
+      name: "domain",
+      "from": {"path": ["domain"]},
+      severity: "error",
+      "to": { "path": ["app", "service", "usecase", "view"] }
+    },
     /* rules from the 'recommended' preset: */
     {
       name: 'no-circular',
