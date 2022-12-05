@@ -12,7 +12,7 @@ import React from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { container, ContainerContext } from './app/ContainerContext';
-import NavigatorStack from './app/NavigatorStack';
+import NavigatorStack from './app/navigation/NavigatorStack';
 import IntlProvider from './app/i18n/IntlProvider';
 import { AuthenticationProvider } from './app/auth/AuthContext';
 
