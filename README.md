@@ -1,6 +1,6 @@
 # Project Name
 
-## Add a service to the service container
+## Service container
 
 Declare your service:
 ```ts
@@ -10,7 +10,7 @@ export type ServiceContainer = {
 };
 ```
 
-Add your services to the service container:
+Add your service to the service container:
 ```ts
 // src/app/ServiceContainerContext.tsx
 import myService from 'path/service/module'
@@ -20,7 +20,7 @@ export const container = {
 };
 ```
 
-Add your services to the service container used for test:
+Add your service to the service container used for test:
 ```ts
 // src/app/testing/WrapperUtils.tsx
 import myService from 'path/service/module'
