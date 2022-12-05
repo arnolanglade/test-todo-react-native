@@ -47,13 +47,4 @@ describe('Intl module', () => {
       expect(screen.getByText('translation here is my value')).toBeTruthy();
     });
   });
-
-  it('renders the todo item details', () => {
-    const intl = renderHook(
-      () => useIntl(),
-      { wrapper: createWrapper(aServiceContainer(), { myTranslationKey: 'translation {message}' }) },
-    );
-
-    expect(intl.result.current.translation('myTranslationKey', { message: 'here is my value' })).toEqual('translation here is my value');
-  });
 });
