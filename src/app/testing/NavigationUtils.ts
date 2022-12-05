@@ -1,6 +1,6 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack/src/types';
 import { RouteProp } from '@react-navigation/native';
-import { RootStackParamList } from '../RootStackListType';
+import { RootStackParamList } from '../navigation/RootStackListType';
 
 export const createNavigationMock = <T extends keyof RootStackParamList>(functions: Partial<NativeStackNavigationProp<RootStackParamList, T, undefined>> = {}): NativeStackNavigationProp<RootStackParamList, T, undefined> => ({
   navigate: jest.fn(),
