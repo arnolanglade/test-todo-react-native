@@ -48,19 +48,21 @@ class SafeVaultModule: NSObject {
     
     print("successfully created the new key \(privateKey)")
     
+    //1.5 HASH DATA 
     
-    //2. WITH THE NEW KEY, STORE THE KEY
-    let tag = "com.todo.keys"
+    //2. ENCRYPT DATA WITH KEY
+    
+    //3. WITH THE NEW KEY, STORE THE KEY ENCRYPTED
     let addquery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                    kSecAttrAccount as String: "pinKey",
-                                   kSecAttrService as String: tag,
+                                   kSecAttrService as String: "com.todo.keys",
                                    kSecValueData as String: pin.data(using: .utf8)!,
+                                   kSecAttrAccessControl as String: access
     ]
     
     let status = SecItemAdd(addquery as CFDictionary, nil)
     guard status == errSecSuccess else {
       print("Error status : \(status)")
-      print()
       reject("ERROR_CODE", "Error while saving the key", SafeVaultError.ErrorOnStoreItem)
       return
     }
