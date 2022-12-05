@@ -1,6 +1,7 @@
 import React, {
   createContext, ReactElement, useContext, useEffect, useState,
 } from 'react';
+import * as usecase from '../../service/Auth';
 
 export type AuthContainer = {
   isLoggedIn: boolean,
@@ -16,9 +17,11 @@ export function AuthenticationProvider({ children }: { children: ReactElement })
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const login = () => {
+    usecase.login();
     setIsLoggedIn(true);
   };
   const logout = () => {
+    usecase.logout();
     setIsLoggedIn(false);
   };
 
