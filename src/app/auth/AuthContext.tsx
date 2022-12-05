@@ -12,7 +12,9 @@ const AuthContext = createContext<AuthContainer>({} as AuthContainer);
 
 export const useAuthentication = () => useContext(AuthContext);
 
-export function AuthenticationProvider({ children, defaultIsLoggedIn }: { children: ReactElement, defaultIsLoggedIn?: boolean }) {
+export function AuthenticationProvider(
+  { children, defaultIsLoggedIn }: { children: ReactElement, defaultIsLoggedIn?: boolean },
+) {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(defaultIsLoggedIn || false);
 
   const login = () => {
@@ -22,7 +24,11 @@ export function AuthenticationProvider({ children, defaultIsLoggedIn }: { childr
     setIsLoggedIn(false);
   };
 
-  return <AuthContext.Provider value={{ isLoggedIn, login, logout }}>{children}</AuthContext.Provider>;
+  const providerValue = React.useMemo(() => ({
+    isLoggedIn, login, logout,
+  }), [isLoggedIn]);
+
+  return <AuthContext.Provider value={providerValue}>{children}</AuthContext.Provider>;
 }
 
 AuthenticationProvider.defaultProps = {
