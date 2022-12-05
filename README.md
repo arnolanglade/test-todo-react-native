@@ -10,7 +10,6 @@ src
 │   ├── i18n
 │   ├── navigation
 │   ├── safevault
-│   ├── ServiceContainerContext.tsx
 │   └── testing
 ├── domain
 ├── service
