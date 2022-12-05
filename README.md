@@ -44,6 +44,10 @@ src
 
 `view/design-system` **must not** use anything except chosen third party library
 
+```
+npm run deps
+```
+
 ## Routing
 
 Declare your screen
