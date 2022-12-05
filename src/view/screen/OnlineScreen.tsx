@@ -4,7 +4,7 @@ import {
 import * as React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuthentication } from '../../app/auth/AuthContext';
-import { RootStackParamList } from '../../app/RootStackListType';
+import { RootStackParamList } from '../../app/navigation/RootStackListType';
 
 export default function Online({ navigation }: NativeStackScreenProps<RootStackParamList, 'Online'>) {
   const { logout } = useAuthentication();
