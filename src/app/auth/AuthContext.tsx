@@ -1,5 +1,5 @@
 import React, {
-  createContext, ReactElement, useContext, useEffect, useState,
+  createContext, ReactElement, useContext, useState,
 } from 'react';
 
 export type AuthContainer = {
@@ -12,8 +12,8 @@ const AuthContext = createContext<AuthContainer>({} as AuthContainer);
 
 export const useAuthentication = () => useContext(AuthContext);
 
-export function AuthenticationProvider({ children }: { children: ReactElement }) {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+export function AuthenticationProvider({ children, defaultIsLoggedIn }: { children: ReactElement, defaultIsLoggedIn?: boolean }) {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(defaultIsLoggedIn || false);
 
   const login = () => {
     setIsLoggedIn(true);
@@ -22,9 +22,9 @@ export function AuthenticationProvider({ children }: { children: ReactElement })
     setIsLoggedIn(false);
   };
 
-  useEffect(() => {
-    setIsLoggedIn(false);
-  }, []);
-
   return <AuthContext.Provider value={{ isLoggedIn, login, logout }}>{children}</AuthContext.Provider>;
 }
+
+AuthenticationProvider.defaultProps = {
+  defaultIsLoggedIn: false,
+};

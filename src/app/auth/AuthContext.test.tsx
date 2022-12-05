@@ -1,14 +1,24 @@
 import {
   renderHook, act,
 } from '@testing-library/react-native';
-import { aServiceContainer, createWrapper } from '../testing/WrapperUtils';
-import { useAuthentication } from './AuthContext';
+import React, { ReactElement } from 'react';
+import { AuthenticationProvider, useAuthentication } from './AuthContext';
+
+const createWrapper = (setIsLoggedIn?: boolean) => function Wrapper(
+  { children }: { children: ReactElement },
+) {
+  return (
+    <AuthenticationProvider defaultIsLoggedIn={setIsLoggedIn}>
+      {children}
+    </AuthenticationProvider>
+  );
+};
 
 describe('Auth provider', () => {
   it('nobody is logged in by default', () => {
     const { result } = renderHook(
       () => useAuthentication(),
-      { wrapper: createWrapper(aServiceContainer()) },
+      { wrapper: createWrapper() },
     );
 
     expect(result.current.isLoggedIn).toEqual(false);
@@ -16,7 +26,7 @@ describe('Auth provider', () => {
   it('logs in an user', () => {
     const { result } = renderHook(
       () => useAuthentication(),
-      { wrapper: createWrapper(aServiceContainer()) },
+      { wrapper: createWrapper() },
     );
 
     act(() => result.current.login());
@@ -27,7 +37,7 @@ describe('Auth provider', () => {
   it('logs out an user', () => {
     const { result } = renderHook(
       () => useAuthentication(),
-      { wrapper: createWrapper(aServiceContainer()) },
+      { wrapper: createWrapper(true) },
     );
 
     act(() => result.current.logout());
