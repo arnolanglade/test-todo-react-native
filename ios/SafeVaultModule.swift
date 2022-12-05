@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import BCryptSwift
 
 @objc(SafeVaultModule)
 class SafeVaultModule: NSObject {
@@ -50,19 +49,26 @@ class SafeVaultModule: NSObject {
     print("successfully created the new key \(privateKey)")
     
     //1.5 HASH DATA 
-    var hashedPassword = BCryptSwift.hashPassword(pin, BCryptSwift.generateSalt())
+    guard var hashedPassword = BCryptSwift.hashPassword(pin, withSalt: BCryptSwift.generateSalt()) else {
+      reject("ERROR_CODE", "Error while saving the key", SafeVaultError.ErrorOnStoreItem)
+      return
+    }
     
+    print("hashed password \(hashedPassword)")
     
     //2. ENCRYPT DATA WITH KEY
     
     //3. WITH THE NEW KEY, STORE THE KEY ENCRYPTED
+    //TODO: change key
     let addquery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                    kSecAttrAccount as String: "pinKey",
                                    kSecAttrService as String: "com.todo.keys",
-                                   kSecValueData as String: pin.data(using: .utf8)!,
+                                   kSecValueData as String: hashedPassword.data(using: .utf8)!,
                                    kSecAttrAccessControl as String: access
     ]
     
+    
+    //TODO: handle duplicate entry error
     let status = SecItemAdd(addquery as CFDictionary, nil)
     guard status == errSecSuccess else {
       print("Error status : \(status)")
