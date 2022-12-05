@@ -7,9 +7,9 @@ import { Text } from 'react-native';
 import { aServiceContainer, createWrapper } from '../testing/WrapperUtils';
 import { Translation, useIntl } from './IntlProvider';
 
-describe('Intl', () => {
+describe('Intl module', () => {
   describe('Translation hook', () => {
-    it('renders the correct translation', () => {
+    it('returns the correct translation depending on the given key', () => {
       const intl = renderHook(
         () => useIntl(),
         { wrapper: createWrapper(aServiceContainer(), { myTranslationKey: 'translation message' }) },
@@ -18,7 +18,7 @@ describe('Intl', () => {
       expect(intl.result.current.translation('myTranslationKey')).toEqual('translation message');
     });
 
-    it('renders the correct value', () => {
+    it('adds a value to the translation', () => {
       const intl = renderHook(
         () => useIntl(),
         { wrapper: createWrapper(aServiceContainer(), { myTranslationKey: 'translation {message}' }) },
@@ -29,7 +29,7 @@ describe('Intl', () => {
   });
 
   describe('Translation component', () => {
-    it('renders the Translation tag', () => {
+    it('renders the correct translation depending on the given key', () => {
       render(
         <Text><Translation id="myTranslationKey" /></Text>,
         { wrapper: createWrapper(aServiceContainer(), { myTranslationKey: 'translation message' }) },
@@ -38,7 +38,7 @@ describe('Intl', () => {
       expect(screen.getByText('translation message')).toBeTruthy();
     });
 
-    it('renders the Translation tag with value', () => {
+    it('adds a value to the translation', () => {
       render(
         <Text><Translation id="myTranslationKey" values={{ message: 'here is my value' }} /></Text>,
         { wrapper: createWrapper(aServiceContainer(), { myTranslationKey: 'translation {message}' }) },
