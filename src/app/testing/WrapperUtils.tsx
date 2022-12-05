@@ -5,8 +5,7 @@ import { ServiceContainerContext, ServiceContainer } from '../ServiceContainerCo
 import IntlProvider, { Translations } from '../i18n/IntlProvider';
 
 export const aServiceContainer = (services: Partial<ServiceContainer> = {}): ServiceContainer => ({
-  queryTodoList: jest.fn(),
-  queryTodoItem: jest.fn(),
+  // Instantiate your services here...
   ...services,
 });
 
