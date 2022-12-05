@@ -19,6 +19,12 @@ module.exports = {
       severity: "error",
       "to": { "path": ["view"] }
     },
+    {
+      name: "screen",
+      "from": {"path": ["screen"]},
+      severity: "error",
+      "to": { "path": ["service"] }
+    },
     /* rules from the 'recommended' preset: */
     {
       name: 'no-circular',
