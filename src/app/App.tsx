@@ -11,10 +11,10 @@
 import React from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { container, ServiceContainerContext } from './app/ServiceContainerContext';
-import NavigatorStack from './app/navigation/NavigatorStack';
-import IntlProvider from './app/i18n/IntlProvider';
-import { AuthenticationProvider } from './app/auth/AuthContext';
+import { container, ServiceContainerContext } from './ServiceContainerContext';
+import NavigatorStack from './navigation/NavigatorStack';
+import IntlProvider from './i18n/IntlProvider';
+import { AuthenticationProvider } from './auth/AuthContext';
 
 const queryClient = new QueryClient();
 
