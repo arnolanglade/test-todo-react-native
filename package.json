@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "deps": "depcruise --config .dependency-cruiser.js src",
     "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prestorybook": "rnstl"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.4.1",
@@ -56,6 +57,7 @@
     "jest": "^28.0.0",
     "metro-react-native-babel-preset": "0.72.3",
     "react-dom": "^18.2.0",
+    "react-native-storybook-loader": "^2.0.5",
     "react-test-renderer": "18.1.0",
     "typescript": "^4.8.3"
   },
@@ -73,5 +75,11 @@
   "volta": {
     "node": "18.12.1",
     "npm": "7.24.2"
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": ["./src/view/design-system"],
+      "pattern": "**/*.stories.tsx"
+    }
   }
 }
